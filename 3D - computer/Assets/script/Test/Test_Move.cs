@@ -4,8 +4,15 @@ using UnityEngine;
 
 public class Test_Move : MonoBehaviour
 {
-    public Vector3 speedvec;
-    public float speed;
+    //public Vector3 speedvec;
+    public float moveSpeed = 5.0f;
+    private Vector3 moveDirection;
+
+    public CharacterController characterController;
+    private void Awake()
+    {
+        characterController = GetComponent<CharacterController>();
+    }
     void Start()
     {
         
@@ -14,23 +21,14 @@ public class Test_Move : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        speedvec = Vector3.zero;
+        characterController.Move(moveDirection * moveSpeed * Time.deltaTime);
         if (Input.GetKey(KeyCode.W))
         {
-            speedvec.z += speed;
+            MoveTo(moveDirection);
         }
-        if (Input.GetKey(KeyCode.A))
-        {
-            speedvec.x -= speed;
-        }
-        if (Input.GetKey(KeyCode.S))
-        {
-            speedvec.z -= speed;
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            speedvec.x += speed;
-        }
-        transform.Translate(speedvec * Time.deltaTime);
+    }
+    public void MoveTo(Vector3 direction)
+    {
+        moveDirection = new Vector3(direction.x, direction.y, direction.z);
     }
 }
