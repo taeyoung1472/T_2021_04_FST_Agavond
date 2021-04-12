@@ -1000,26 +1000,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 440005765}
   m_CullTransparentMesh: 0
---- !u!1 &442332719 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: d04b64ac14b0e6843ae33ac3f74f3030, type: 3}
-  m_PrefabInstance: {fileID: 1877370652}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &442332723
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 442332719}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ae7d2e2ad61de24fbb7611d25450e0e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hp: 100
-  UI_HP: {fileID: 1123046535}
-  arrayAudio: []
 --- !u!1 &480093139
 GameObject:
   m_ObjectHideFlags: 0
@@ -1522,7 +1502,7 @@ Transform:
   m_Children:
   - {fileID: 71208594}
   m_Father: {fileID: 788833063}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &679175428
 MonoBehaviour:
@@ -1771,8 +1751,10 @@ GameObject:
   - component: {fileID: 788833061}
   - component: {fileID: 788833064}
   - component: {fileID: 788833065}
+  - component: {fileID: 788833066}
+  - component: {fileID: 788833067}
   m_Layer: 0
-  m_Name: player
+  m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1809,7 +1791,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cc: {fileID: 788833061}
+  basicspeed: 0
   speed: 10
+  runspeed: 15
   jumpSpeed: 4
   gravity: 9.81
 --- !u!4 &788833063
@@ -1823,9 +1807,9 @@ Transform:
   m_LocalPosition: {x: 0, y: 1.6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 1877370653}
   - {fileID: 679175427}
   - {fileID: 983089600}
-  - {fileID: 1877370653}
   - {fileID: 963194228}
   - {fileID: 1594981865}
   - {fileID: 288798773}
@@ -1865,6 +1849,34 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 84
   m_CollisionDetection: 0
+--- !u!114 &788833066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 788833060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ae7d2e2ad61de24fbb7611d25450e0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 100
+  UI_HP: {fileID: 1123046535}
+  arrayAudio: []
+--- !u!65 &788833067
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 788833060}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 2.59, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &811648480
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2662,7 +2674,7 @@ Transform:
   - {fileID: 331975943}
   - {fileID: 1707808639}
   m_Father: {fileID: 788833063}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &987363078
 GameObject:
@@ -3403,7 +3415,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cc: {fileID: 1189700392}
+  basicspeed: 0
   speed: 10
+  runspeed: 0
   jumpSpeed: 4
   gravity: 9.81
 --- !u!1 &1192351063
@@ -3666,7 +3680,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cc: {fileID: 1208571885}
+  basicspeed: 0
   speed: 3
+  runspeed: 0
   jumpSpeed: 4
   gravity: 9.81
 --- !u!4 &1215130392 stripped
@@ -6096,7 +6112,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: d04b64ac14b0e6843ae33ac3f74f3030, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d04b64ac14b0e6843ae33ac3f74f3030, type: 3}
       propertyPath: m_LocalScale.y
@@ -6148,7 +6164,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: d04b64ac14b0e6843ae33ac3f74f3030, type: 3}
       propertyPath: m_Name
-      value: man
+      value: player
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d04b64ac14b0e6843ae33ac3f74f3030, type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d04b64ac14b0e6843ae33ac3f74f3030, type: 3}
