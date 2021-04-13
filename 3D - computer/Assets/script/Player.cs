@@ -10,8 +10,11 @@ public class Player : MonoBehaviour
     public Text UI_HP;
     public AudioSource[] arrayAudio;
     public bool dotDamage;
+    public int Range;
+    RaycastHit hit;
+    public float ShootDelay;
+    public float RPM;
 
-    // Start is called before the first frame update
     void Start()
     {
         arrayAudio = GameObject.Find("Sound").GetComponents<AudioSource>();
@@ -22,14 +25,18 @@ public class Player : MonoBehaviour
     {
         //GetMoney = GameObject.FindWithTag("enemy").GetComponent<enemy>().PlayerMoney;
         //money += GetMoney;
+        ShootDelay += Time.deltaTime;
+        if (ShootDelay > RPM)
+        {
+               fire();
+        }
         if (hp > 100)
         {
             hp = 100;
         }
-
         if (hp <= 0)
         {
-            Destroy(gameObject);
+            //Destroy(gameObject);
             SceneManager.LoadScene("Main");
         }
         UI_HP.text = string.Format("{0}", hp);
@@ -57,11 +64,6 @@ public class Player : MonoBehaviour
         {
             damage();
         }
-        if (col.collider.tag == "NEWCLEAR")
-        {
-            dotDamage = true;
-            StartCoroutine(Dot());
-        }
         else
         {
             dotDamage = false;
@@ -77,12 +79,24 @@ public class Player : MonoBehaviour
         arrayAudio[3].Play();
         hp = hp + 40;
     }
-    IEnumerator Dot()
+    void fire()
+    {
+        Debug.DrawRay(transform.position, new Vector3(0,-3,0) * Range, Color.yellow, 2f);
+        if (Physics.Raycast(transform.position, new Vector3(0, -3, 0), out hit, Range))
+        {
+            ShootDelay = 0;
+            if (hit.transform.CompareTag("NEWCLEAR"))
+            {
+                hp--;
+            }
+        }
+    }
+    /*IEnumerator Dot()
     {
         while (dotDamage == true)
         {
             hp--;
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(2.0f);
         }
-    }
+    }*/
 }
