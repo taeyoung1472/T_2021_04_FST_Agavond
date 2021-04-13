@@ -10,7 +10,7 @@ public class GUN : MonoBehaviour
     private int[] damage = { 20, 35, 100, 30, 40, 60, 100, 200, 40 };
     private float[] RPM = { 0.2f, 0.15f, 1f, 0.067f, 0.1f, 0.12f, 0.5f, 2f, 0.075f };
     public int curammo;
-    private int[] magammo = { 7, 15, 6, 30, 30, 20, 10, 5, 100 };
+    private int[] magammo = { 7, 15, 6, 30, 30, 20, 10, 5, 99 };
     public float ShootDelay;
     //public float[] ReloadTime = { "M1911", "PL15", "더블액션 리볼버", "MP5", "AK74", "SA58", "SVD", "M24", "M249" };
     public float ReloadTime;

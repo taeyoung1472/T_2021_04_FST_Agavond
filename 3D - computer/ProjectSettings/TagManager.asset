@@ -9,6 +9,7 @@ TagManager:
   - enemy
   - Item
   - enemy bullet
+  - NEWCLEAR
   layers:
   - Default
   - TransparentFX

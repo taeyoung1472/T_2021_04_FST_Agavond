@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     public float hp = 100;
     public Text UI_HP;
     public AudioSource[] arrayAudio;
+    public bool dotDamage;
 
     // Start is called before the first frame update
     void Start()
@@ -31,7 +32,7 @@ public class Player : MonoBehaviour
             Destroy(gameObject);
             SceneManager.LoadScene("Main");
         }
-        UI_HP.text = string.Format("HP : {0}", hp);
+        UI_HP.text = string.Format("{0}", hp);
     }
 
     private void Awake()
@@ -56,6 +57,15 @@ public class Player : MonoBehaviour
         {
             damage();
         }
+        if (col.collider.tag == "NEWCLEAR")
+        {
+            dotDamage = true;
+            StartCoroutine(Dot());
+        }
+        else
+        {
+            dotDamage = false;
+        }
     }
     void damage()
     {
@@ -66,5 +76,13 @@ public class Player : MonoBehaviour
     {
         arrayAudio[3].Play();
         hp = hp + 40;
+    }
+    IEnumerator Dot()
+    {
+        while (dotDamage == true)
+        {
+            hp--;
+            yield return new WaitForSeconds(2f);
+        }
     }
 }

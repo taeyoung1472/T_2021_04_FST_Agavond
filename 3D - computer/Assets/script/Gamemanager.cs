@@ -10,11 +10,11 @@ public class Gamemanager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Money_UI.text = string.Format("Money : {0}", Money);
+        Money_UI.text = string.Format("{0}", Money);
     }
     public void UI_Update()
     {
-        Money_UI.text = string.Format("Money : {0}", Money);
+        Money_UI.text = string.Format("{0}", Money);
     }
     public void GetMoney(int Get)
     {
