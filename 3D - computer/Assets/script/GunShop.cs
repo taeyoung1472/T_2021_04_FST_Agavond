@@ -10,8 +10,10 @@ public class GunShop : MonoBehaviour
     public RectTransform GunStore;
     public int Money;
     private int[] Price = {100,500,1000,4500,10000,20000,30000,45000};
+    private money money;
     //public RectTransform PetStore;
 
+    public GameObject[] Gunarr { };
     public GameObject Pistole;
     public GameObject Revolver;
     public GameObject SMG;
@@ -31,6 +33,7 @@ public class GunShop : MonoBehaviour
     {
         GameManager = FindObjectOfType<Gamemanager>();
         Money = FindObjectOfType<Gamemanager>().Money;
+        money.UI_Update(Money);
         //GameManager.UI_Update();
     }
     private void Update()
@@ -57,7 +60,7 @@ public class GunShop : MonoBehaviour
     }*/
     public void upgrade1()
     {
-        if (Money >= 100)
+        if (Money >= Price[0])
         {
             Debug.Log("업그레이드를 함");
             UI_Update();
@@ -70,111 +73,101 @@ public class GunShop : MonoBehaviour
     }
     public void upgrade2()
     {
-        if (Money >= 500)
+        if (Money >= Price[1])
         {
-            GameManager.GetMoney(100);
             UI_Update();
-            Destroy(Revolver);
+            Revolver.SetActive(false);
+            GameManager.GetMoney(-Price[1]);
         }
     }
     public void upgrade3()
     {
-        if (Money >= 1000)
+        if (Money >= Price[2])
         {
-            GameManager.GetMoney(-Price[2]);
             UI_Update();
-            Destroy(SMG);
+            SMG.SetActive(false);
+            GameManager.GetMoney(-Price[2]);
         }
     }
     public void upgrade4()
     {
-        if (Money >= 4500)
+        if (Money >= Price[3])
         {
-            GameManager.GetMoney(-Price[3]);
             UI_Update();
-            Destroy(Asultrifle);
+            Asultrifle.SetActive(false);
+            GameManager.GetMoney(-Price[3]);
         }
     }
     public void upgrade5()
     {
-        if (Money >= 10000)
+        if (Money >= Price[4])
         {
-            GameManager.GetMoney(-Price[4]);
             UI_Update();
-            Destroy(Battelrifle);
+            Battelrifle.SetActive(false);
+            GameManager.GetMoney(-Price[4]);
         }
     }
     public void upgrade6()
     {
-        if (Money >= 20000)
+        if (Money >= Price[5])
         {
-            GameManager.GetMoney(-Price[5]);
             UI_Update();
-            Destroy(DMR);
+            DMR.SetActive(false);
+            GameManager.GetMoney(-Price[5]);
         }
     }
     public void upgrade7()
     {
-        if (Money >= 30000)
+        if (Money >= Price[6])
         {
-            GameManager.GetMoney(-Price[6]);
             UI_Update();
-            Destroy(SR);
+            SR.SetActive(false);
+            GameManager.GetMoney(-Price[6]);
         }
     }
     public void upgrade8()
     {
-        if (Money >= 45000)
+        if (Money >= Price[7])
         {
-            GameManager.GetMoney(-Price[7]);
             UI_Update();
-            Destroy(Lmg);
+            Lmg.SetActive(false);
+            GameManager.GetMoney(-Price[7]);
         }
     }
-    /*public void AutoUpGrade1()
+    public void choice1()
     {
-        if (Price > 100)
-        {
-            Destroy(Drone);
-        }
+        GameManager.upgradeGun(1);
     }
-    public void AutoUpGrade2()
+    public void choice2()
     {
-        if (Price > 1000)
-        {
-            Destroy(GrounDrone);
-        }
+        GameManager.upgradeGun(2);
     }
-    public void AutoUpGrade3()
+    public void choice3()
     {
-        if (Price > 10000)
-        {
-            Destroy(Helii);
-        }
+        GameManager.upgradeGun(3);
     }
-    public void AutoUpGrade4()
+    public void choice4()
     {
-        if (Price > 100000)
-        {
-            Destroy(Jet);
-        }
+        GameManager.upgradeGun(4);
     }
-    public void AutoUpGrade5()
+    public void choice5()
     {
-        if (Price > 1000000)
-        {
-            Destroy(Mortal);
-        }
+        GameManager.upgradeGun(5);
     }
-    public void AutoUpGrade6()
+    public void choice6()
     {
-        if (Price > 10000000)
-        {
-            Destroy(artillery);
-        }
-    }*/
+        GameManager.upgradeGun(6);
+    }
+    public void choice7()
+    {
+        GameManager.upgradeGun(7);
+    }
+    public void choice8()
+    {
+        GameManager.upgradeGun(8);
+    }
     public void UI_Update()
     {
-        Money_UI.text = string.Format("Money : {0}", Money);
+        Money_UI.text = string.Format("{0}", Money);
     }
 }

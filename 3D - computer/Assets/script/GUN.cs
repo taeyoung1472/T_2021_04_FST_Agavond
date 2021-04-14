@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class GUN : MonoBehaviour
 {
     //총관련
-    private string[] GunName = {"M1911", "PL15", "더블액션 리볼버", "MP5", "AK74", "SA58", "SVD", "M24", "M249"};
+    private string[] GunName = {"M1911", "PL15", "Revolver", "MP5", "AK74", "SA58", "SVD", "M24", "M249"};
     private int[] damage = { 20, 35, 100, 30, 40, 60, 100, 200, 40 };
     private float[] RPM = { 0.2f, 0.15f, 1f, 0.067f, 0.1f, 0.12f, 0.5f, 2f, 0.075f };
     public int curammo;
@@ -93,5 +93,9 @@ public class GUN : MonoBehaviour
     void empty()
     {
         arrayAudio[1].Play();
+    }
+    public void pullgun(int gun)
+    {
+        arr = gun;
     }
 }

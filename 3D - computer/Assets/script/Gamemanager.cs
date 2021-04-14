@@ -7,6 +7,9 @@ public class Gamemanager : MonoBehaviour
 {
     public int Money;
     public money wallet;
+    public int Arr;
+    public GUN gun;
+    public int maxarr = 0;
     //public Text Money_UI;
 
     /*private void Awake()
@@ -16,6 +19,7 @@ public class Gamemanager : MonoBehaviour
     void Start()
     {
         load();
+        wallet.UI_Update(Money);
         //Money_UI.text = string.Format("{0}", Money);
     }
     //public void UI_Update()
@@ -46,5 +50,32 @@ public class Gamemanager : MonoBehaviour
             wallet.UI_Update(Money);
             Debug.Log("성공");
         }
+        if (gun == null)
+        {
+            Debug.Log("총을 가져옴");
+            gun = GameObject.FindObjectOfType<GUN>();
+            Debug.Log("총 배열을 적용시킴");
+            gun.pullgun(Arr);
+            Debug.Log("성공");
+        }
     }
+    public void upgradeGun(int cur)
+    {
+        if (maxarr <= cur)
+        {
+            maxarr = cur;
+        }
+        Arr = cur;
+    }
+    /*public void Gunload()
+    {
+        if (gun == null)
+        {
+            Debug.Log("총을 가져옴");
+            gun = GameObject.FindObjectOfType<GUN>();
+            Debug.Log("총 배열을 적용시킴");
+            gun.pullgun(Arr);
+            Debug.Log("성공");
+        }
+    }*/
 }
