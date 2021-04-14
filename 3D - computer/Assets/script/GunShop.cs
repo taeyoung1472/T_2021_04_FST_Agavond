@@ -13,7 +13,6 @@ public class GunShop : MonoBehaviour
     private money money;
     //public RectTransform PetStore;
 
-    public GameObject[] Gunarr { };
     public GameObject Pistole;
     public GameObject Revolver;
     public GameObject SMG;
@@ -29,6 +28,7 @@ public class GunShop : MonoBehaviour
     public GameObject Jet;
     public GameObject Mortal;
     public GameObject artillery;*/
+
     private void Start()
     {
         GameManager = FindObjectOfType<Gamemanager>();
