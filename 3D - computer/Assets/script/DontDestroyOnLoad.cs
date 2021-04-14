@@ -4,10 +4,26 @@ using UnityEngine;
 
 public class DontDestroyOnLoad : MonoBehaviour
 {
-    // Start is called before the first frame update
+
     private void Awake()
     {
-        DontDestroyOnLoad(gameObject);
+        var obj = FindObjectsOfType<DontDestroyOnLoad>();
+
+        if (obj.Length == 1)
+
+        {
+
+            DontDestroyOnLoad(gameObject);
+
+        }
+
+        else
+
+        {
+
+            Destroy(gameObject);
+
+        }
     }
     void Start()
     {

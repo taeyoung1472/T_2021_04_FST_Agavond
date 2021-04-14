@@ -31,11 +31,11 @@ public class GunShop : MonoBehaviour
     {
         GameManager = FindObjectOfType<Gamemanager>();
         Money = FindObjectOfType<Gamemanager>().Money;
-        GameManager.UI_Update();
+        //GameManager.UI_Update();
     }
     private void Update()
     {
-        GameManager.UI_Update();
+        //GameManager.UI_Update();
     }
     public void Enter()
     {

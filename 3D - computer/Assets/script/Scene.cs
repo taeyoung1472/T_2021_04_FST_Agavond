@@ -12,6 +12,6 @@ public class Scene : MonoBehaviour
             case "PlayBtn":
                 SceneManager.LoadScene("Game");
                 break;
-        }       
+        }
     }
 }

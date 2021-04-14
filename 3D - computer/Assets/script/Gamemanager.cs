@@ -5,24 +5,46 @@ using UnityEngine.UI;
 
 public class Gamemanager : MonoBehaviour
 {
-    public int Money;   
-    public Text Money_UI = null;
-    // Start is called before the first frame update
+    public int Money;
+    public money wallet;
+    //public Text Money_UI;
+
+    /*private void Awake()
+    {
+        wallet = GameObject.FindObjectOfType<money>();
+    }*/
     void Start()
     {
-        Money_UI.text = string.Format("{0}", Money);
+        load();
+        //Money_UI.text = string.Format("{0}", Money);
     }
-    public void UI_Update()
-    {
-        Money_UI.text = string.Format("{0}", Money);
-    }
+    //public void UI_Update()
+    //{
+        //Money_UI.text = string.Format("{0}", Money);
+    //}
     public void GetMoney(int Get)
     {
         Money += Get;
-        UI_Update();
+        wallet.UI_Update(Money);
+        //UI_Update();
     }
     public void die()
     {
 
+    }
+    public void load()
+    {
+        wallet = GameObject.FindObjectOfType<money>();
+    }
+    public void Update()
+    {
+        if (wallet == null)
+        {
+            Debug.Log("돈을 가져옴");
+            wallet = GameObject.FindObjectOfType<money>();
+            Debug.Log("돈을 적용시킴");
+            wallet.UI_Update(Money);
+            Debug.Log("성공");
+        }
     }
 }

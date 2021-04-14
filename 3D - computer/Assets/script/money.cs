@@ -11,14 +11,14 @@ public class money : MonoBehaviour
 
     public void Start()
     {
-        Money = FindObjectOfType<Gamemanager>().Money;
+        UI_Money.text = string.Format("{0}", Money);
     }
     void Update()
     {
 
     }
-    public void UI_Update()
+    public void UI_Update(int money)
     {
-        UI_Money.text = string.Format("Money : {0}", Money);
+        UI_Money.text = string.Format("{0}", money);
     }
 }
