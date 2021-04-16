@@ -20,7 +20,7 @@ public class GUN : MonoBehaviour
     public Text HUD;
     public Text UI_GunName;
     //총 관련 오디오
-    public AudioSource[] arrayAudio;    
+    public AudioSource[] arrayAudio;
     
     RaycastHit hit;
 

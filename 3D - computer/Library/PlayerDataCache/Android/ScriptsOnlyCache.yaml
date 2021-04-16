@@ -9,6 +9,7 @@ ScriptsOnlyBuild:
     - Gamemanager
     - GunShop
     - Hero
+    - JoyStick
     - MoneyLoader
     - PetAI
     - Player
@@ -59,8 +60,6 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 48
       Script: {instanceID: 0}
-    - Class: 49
-      Script: {instanceID: 0}
     - Class: 54
       Script: {instanceID: 0}
     - Class: 64
@@ -96,8 +95,6 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 12500}
     - Class: 114
-      Script: {instanceID: 12534}
-    - Class: 114
       Script: {instanceID: 12724}
     - Class: 114
       Script: {instanceID: 12776}
@@ -105,10 +102,6 @@ ScriptsOnlyBuild:
       Script: {instanceID: 12780}
     - Class: 114
       Script: {instanceID: 13212}
-    - Class: 114
-      Script: {instanceID: 13238}
-    - Class: 114
-      Script: {instanceID: 13254}
     - Class: 114
       Script: {instanceID: 13392}
     - Class: 114
@@ -118,13 +111,13 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 13704}
     - Class: 114
-      Script: {instanceID: 13712}
-    - Class: 114
       Script: {instanceID: 13742}
     - Class: 114
       Script: {instanceID: 13928}
     - Class: 114
       Script: {instanceID: 13966}
+    - Class: 114
+      Script: {instanceID: 20908}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -168,6 +161,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 48
       Script: {instanceID: 0}
+    - Class: 49
+      Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
     - Class: 104
@@ -185,6 +180,8 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 12500}
     - Class: 114
+      Script: {instanceID: 12534}
+    - Class: 114
       Script: {instanceID: 12816}
     - Class: 114
       Script: {instanceID: 12980}
@@ -193,11 +190,17 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 13192}
     - Class: 114
+      Script: {instanceID: 13238}
+    - Class: 114
+      Script: {instanceID: 13254}
+    - Class: 114
       Script: {instanceID: 13392}
     - Class: 114
       Script: {instanceID: 13530}
     - Class: 114
       Script: {instanceID: 13536}
+    - Class: 114
+      Script: {instanceID: 13712}
     - Class: 114
       Script: {instanceID: 13928}
     - Class: 115
@@ -375,7 +378,7 @@ ScriptsOnlyBuild:
     className: Player
   - hash:
       serializedVersion: 2
-      Hash: 621e08e6d21ab64223710ce9dd27f5dc
+      Hash: a0404cc53698b064b2101603f831a86b
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Hero
@@ -841,8 +844,14 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
+  - hash:
+      serializedVersion: 2
+      Hash: 5114609584df89ab67c30a4c0ae3dcf6
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: JoyStick
   platform: 13
   scenePathNames:
-  - Assets/Scenes/Game.unity
   - Assets/Scenes/Main.unity
+  - Assets/Scenes/Game.unity
   playerPath: C:/Users/USER/Desktop/FST.apk
