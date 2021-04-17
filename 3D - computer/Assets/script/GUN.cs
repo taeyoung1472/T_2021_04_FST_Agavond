@@ -16,6 +16,7 @@ public class GUN : MonoBehaviour
     public float ReloadTime;
     public bool isFire = true;
     public int arr;
+    public bool Fire;
     //총 관련 UI
     public Text HUD;
     public Text UI_GunName;
@@ -43,7 +44,7 @@ public class GUN : MonoBehaviour
     void Update()
     {
         ShootDelay += Time.deltaTime;
-        if (Input.GetKey(KeyCode.Mouse0) && ShootDelay > RPM[arr])//총쏘기 판단
+        if (Fire == true && ShootDelay > RPM[arr])//총쏘기 판단
         {
             if (isFire == true)
             {
@@ -57,11 +58,11 @@ public class GUN : MonoBehaviour
                 }
             }
         }
-        if (Input.GetKeyDown(KeyCode.R))//장전
+        /*if (Input.GetKeyDown(KeyCode.R))//장전
         {
             arrayAudio[2].Play();
             StartCoroutine("Reload");
-        }
+        }*/
         HUD.text = string.Format("{0} / {1}", curammo, magammo[arr]);
         UI_GunName.text = string.Format("{0}", GunName[arr]);
     }
@@ -97,5 +98,18 @@ public class GUN : MonoBehaviour
     public void pullgun(int gun)
     {
         arr = gun;
+    }
+    public void ButtonShoot()
+    {
+        Fire = true;
+    }
+    public void ButtonShootStop()
+    {
+        Fire = false;
+    }
+    public void reroad()
+    {
+       arrayAudio[2].Play();
+       StartCoroutine("Reload");
     }
 }

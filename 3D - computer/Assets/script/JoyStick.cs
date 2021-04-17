@@ -61,11 +61,9 @@ public class JoyStick : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     }
     private void InputControlVector()
     {
-        //Debug.Log(inputDirection.x + " / " + inputDirection.y);
         cur.text = string.Format("{0}", inputDirection.x);
         cur2.text = string.Format("{0}", speed);
         cur3.text = string.Format("{0}", inputDirection.y);
-        move.Move(inputDirection.x * speed, inputDirection.y * speed);
     }
     private void Update()
     {
