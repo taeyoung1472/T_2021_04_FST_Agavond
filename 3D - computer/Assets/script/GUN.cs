@@ -17,6 +17,8 @@ public class GUN : MonoBehaviour
     public bool isFire = true;
     public int arr;
     public bool Fire;
+    public GameObject Bullet;
+    public Transform FirePos;
     //총 관련 UI
     public Text HUD;
     public Text UI_GunName;
@@ -78,6 +80,7 @@ public class GUN : MonoBehaviour
         curammo--;
 
         arrayAudio[0].Play();
+        Instantiate(Bullet, FirePos.transform.position, FirePos.transform.rotation);
         ShootDelay = 0f;
         Debug.DrawRay(transform.position, transform.forward * Range, Color.yellow, 0.1f);
         if (Physics.Raycast(transform.position, transform.forward, out hit, Range))

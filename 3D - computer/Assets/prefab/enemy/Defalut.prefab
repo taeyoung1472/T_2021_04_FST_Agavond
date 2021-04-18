@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 8297460415838483803}
   - component: {fileID: 482003279925763090}
   - component: {fileID: 4922653851450438156}
-  - component: {fileID: 6465170724947467524}
   - component: {fileID: 3718423534164693123}
   m_Layer: 0
   m_Name: Defalut
@@ -114,20 +113,6 @@ MonoBehaviour:
   hp: 100
   target: {fileID: 0}
   DropMoney: 10
-  PlayerMoney: 0
---- !u!114 &6465170724947467524
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2848500448364610301}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7a4e31aef1d5ad48986cd6748a1197e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Hit_Count: 0
 --- !u!195 &3718423534164693123
 NavMeshAgent:
   m_ObjectHideFlags: 0
