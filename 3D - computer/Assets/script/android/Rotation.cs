@@ -18,7 +18,7 @@ public class Rotation : MonoBehaviour
             MousePosition = Input.mousePosition;
             //transform.position = MousePosition;
             //Debug.Log(MousePosition);
-            if (MousePosition.x > 1480)
+            if (MousePosition.x > 960)
             {
                 transform.Rotate(0f, Input.GetAxis("Mouse X") * speed, 0f, Space.World);
                 //transform.Rotate(-Input.GetAxis("Mouse Y") * speed, 0f, 0f);

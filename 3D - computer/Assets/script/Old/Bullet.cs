@@ -8,6 +8,10 @@ public class Bullet : MonoBehaviour
     public float Bulletspeed = 100f;
     public int damdage;
 
+    private void Start()
+    {
+        StartCoroutine(Destroy());
+    }
     void Update()
     {
         GetComponent<Rigidbody>().AddForce(transform.forward * Bulletspeed);
@@ -22,5 +26,10 @@ public class Bullet : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+    IEnumerator Destroy()
+    {
+        yield return new WaitForSeconds(1f);
+        Destroy(gameObject);
     }
 }
