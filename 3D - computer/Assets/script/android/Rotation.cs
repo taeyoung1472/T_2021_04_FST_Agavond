@@ -1,18 +1,35 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Rotation : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField]
+    private float speed = 3f;
+    Vector2 MousePosition;
+    Camera Camera;
 
-    // Update is called once per frame
+    private void Start()
+    {
+        Camera = GameObject.Find("Main Camera").GetComponent<Camera>();
+    }
     void Update()
     {
-        
+        if (Input.GetMouseButton(0))
+        {
+            MousePosition = Input.mousePosition;
+            //transform.position = MousePosition;
+            //Debug.Log(MousePosition);
+            if (MousePosition.x > 1480)
+            {
+                transform.Rotate(0f, Input.GetAxis("Mouse X") * speed, 0f, Space.World);
+                //transform.Rotate(-Input.GetAxis("Mouse Y") * speed, 0f, 0f);
+            }
+        }
+        /*{
+            if (Input.GetMouseButton(0))
+            {
+                transform.Rotate(0f, -Input.GetAxis("Mouse X") * speed, 0f, Space.World);
+                //transform.Rotate(-Input.GetAxis("Mouse Y") * speed, 0f, 0f);
+            }
+        }*/
     }
 }
