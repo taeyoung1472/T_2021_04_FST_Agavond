@@ -2,6 +2,7 @@ ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
     - Bullet
+    - CanvasSetting
     - DontDestroyOnLoad
     - EnemySpawn
     - FpsCheck
@@ -210,6 +211,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 13718}
     - Class: 114
       Script: {instanceID: 13934}
+    - Class: 114
+      Script: {instanceID: 40166}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -751,7 +754,7 @@ ScriptsOnlyBuild:
     className: TMP_StyleSheet
   - hash:
       serializedVersion: 2
-      Hash: e7b4f8f98d693e8ffaf739a537dc1ef7
+      Hash: fd6ff3f60804077b658daeba98626f7e
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Turret
@@ -863,6 +866,18 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
+  - hash:
+      serializedVersion: 2
+      Hash: 5b8854f6649ac01cd664264022881029
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Boss1
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: CanvasSetting
   platform: 13
   scenePathNames:
   - Assets/Scenes/Main.unity

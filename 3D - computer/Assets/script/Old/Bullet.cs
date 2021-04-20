@@ -14,7 +14,7 @@ public class Bullet : MonoBehaviour
     }
     void Update()
     {
-        GetComponent<Rigidbody>().AddForce(transform.forward * Bulletspeed);
+        transform.Translate(Vector3.forward * Bulletspeed * Time.deltaTime);
     }
     void OnCollisionEnter(Collision col)
     {

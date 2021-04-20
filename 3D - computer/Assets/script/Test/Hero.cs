@@ -24,6 +24,13 @@ public class Hero : MonoBehaviour
     {
         basicspeed = speed;
     }
+    void OnCollisionEnter(Collision col)
+    {
+        if (col.collider.tag == "Boss")
+        {
+            StartCoroutine(BossHit());
+        }
+    }
     void Update ()
     {
         if (Move == true)
@@ -89,6 +96,12 @@ public class Hero : MonoBehaviour
     {
         Move = true;
         X = 1;
+    }
+    IEnumerator BossHit()
+    {
+        speed = 1;
+        yield return new WaitForSeconds(2f);
+        speed = basicspeed;
     }
 }
 

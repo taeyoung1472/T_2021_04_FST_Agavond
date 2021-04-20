@@ -14,6 +14,8 @@ public class Turret : MonoBehaviour
     public float ShootDelay;
     public float ReloadTime;
     public bool isFire = true;
+    public GameObject Bullet;
+    public Transform FirePos;
 
     //총 관련 오디오
     public AudioSource[] arrayAudio;
@@ -70,6 +72,7 @@ public class Turret : MonoBehaviour
         arrayAudio[0].Play();
         ShootDelay = 0f;
         Debug.DrawRay(transform.position, transform.forward * Range, Color.yellow, 0.1f);
+        Instantiate(Bullet, FirePos.transform.position, FirePos.transform.rotation);
         if (Physics.Raycast(transform.position, transform.forward, out hit, Range))
         {
             if (hit.transform.GetComponent<enemy>())

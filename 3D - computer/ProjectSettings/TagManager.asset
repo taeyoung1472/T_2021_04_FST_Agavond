@@ -12,6 +12,7 @@ TagManager:
   - NEWCLEAR
   - DontDestroy
   - gun
+  - Boss
   layers:
   - Default
   - TransparentFX
