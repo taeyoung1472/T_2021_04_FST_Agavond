@@ -34,12 +34,11 @@ public class GUN : MonoBehaviour
         //Shoot = GetComponent<AudioSource>();
         //Empty = GetComponent<AudioSource>();
         arrayAudio = GameObject.Find("Sound").GetComponents<AudioSource>();
-        
     }
     // Start is called before the first frame update
     void Start()
     {
-        curammo = magammo[arr];
+        StartCoroutine(Reload());
     }
 
     // Update is called once per frame

@@ -5,12 +5,14 @@ using UnityEngine.SceneManagement;
 public class Scene : MonoBehaviour
 {
     private Gamemanager gameManager;
+    public DontDestroyOnLoad2 main_canvas;
     public  void ChangeSceneBtn()
     {
         switch (this.gameObject.name)
         {
             case "PlayBtn":
                 SceneManager.LoadScene("Game");
+                main_canvas.Change();
                 break;
         }
     }

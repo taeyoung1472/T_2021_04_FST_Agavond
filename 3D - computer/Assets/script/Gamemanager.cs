@@ -7,6 +7,7 @@ public class Gamemanager : MonoBehaviour
 {
     public int Money;
     public money wallet;
+    public DontDestroyOnLoad2 main_canvas;
     public int Arr;
     public GUN gun;
     public int maxarr = 0;
@@ -34,7 +35,7 @@ public class Gamemanager : MonoBehaviour
     }
     public void die()
     {
-
+        main_canvas.Die();
     }
     public void load()
     {

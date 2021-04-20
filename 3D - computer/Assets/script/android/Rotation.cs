@@ -3,24 +3,19 @@
 public class Rotation : MonoBehaviour
 {
     [SerializeField]
-    private float speed = 3f;
-    Vector2 MousePosition;
-    Camera Camera;
-
+    private float speed = 2.5f;
+    public bool Onclick;
     private void Start()
     {
-        Camera = GameObject.Find("Main Camera").GetComponent<Camera>();
+
     }
     void Update()
     {
         if (Input.GetMouseButton(0))
         {
-            MousePosition = Input.mousePosition;
-            //transform.position = MousePosition;
-            //Debug.Log(MousePosition);
-            if (MousePosition.x > 960)
+            if (Onclick == true)
             {
-                transform.Rotate(0f, Input.GetAxis("Mouse X") * speed, 0f, Space.World);
+                transform.Rotate(0f, Input.GetAxis("Mouse X") * speed, 0f);
                 //transform.Rotate(-Input.GetAxis("Mouse Y") * speed, 0f, 0f);
             }
         }
@@ -31,5 +26,13 @@ public class Rotation : MonoBehaviour
                 //transform.Rotate(-Input.GetAxis("Mouse Y") * speed, 0f, 0f);
             }
         }*/
+    }
+    public void onClick()
+    {
+        Onclick = true;
+    }
+    public void outClick()
+    {
+        Onclick = false;
     }
 }

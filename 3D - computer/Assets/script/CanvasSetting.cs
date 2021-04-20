@@ -8,7 +8,6 @@ public class CanvasSetting : MonoBehaviour
     void Start()
     {
         Screen.SetResolution(1920, 1080, true);
-        Screen.SetResolution(Screen.width, Screen.width * 16 / 9, true);
     }
 
     // Update is called once per frame

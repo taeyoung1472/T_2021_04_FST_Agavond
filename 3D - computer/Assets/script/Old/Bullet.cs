@@ -16,17 +16,6 @@ public class Bullet : MonoBehaviour
     {
         transform.Translate(Vector3.forward * Bulletspeed * Time.deltaTime);
     }
-    void OnCollisionEnter(Collision col)
-    {
-        if (col.collider.tag == "Wall")
-        {
-            Destroy(gameObject);
-        }
-        if (col.collider.tag == "enemy")
-        {
-            Destroy(gameObject);
-        }
-    }
     IEnumerator Destroy()
     {
         yield return new WaitForSeconds(1f);

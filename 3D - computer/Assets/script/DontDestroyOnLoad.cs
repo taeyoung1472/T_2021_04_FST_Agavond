@@ -10,29 +10,12 @@ public class DontDestroyOnLoad : MonoBehaviour
         var obj = FindObjectsOfType<DontDestroyOnLoad>();
 
         if (obj.Length == 1)
-
         {
-
             DontDestroyOnLoad(gameObject);
-
         }
-
         else
-
         {
-
             Destroy(gameObject);
-
         }
-    }
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

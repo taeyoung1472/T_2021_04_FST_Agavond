@@ -14,9 +14,11 @@ public class Player : MonoBehaviour
     RaycastHit hit;
     public float ShootDelay;
     public float RPM;
+    public Gamemanager gamemanager;
 
     void Start()
     {
+        gamemanager = FindObjectOfType<Gamemanager>();
         arrayAudio = GameObject.Find("Sound").GetComponents<AudioSource>();
     }
 
@@ -37,6 +39,7 @@ public class Player : MonoBehaviour
         if (hp <= 0)
         {
             //Destroy(gameObject);
+            gamemanager.die();
             SceneManager.LoadScene("Main");
         }
         UI_HP.text = string.Format("{0}", hp);
