@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     public bool dotDamage;
     public int Range;
     RaycastHit hit;
+    public Slider HP_Value;
     public float ShootDelay;
     public float RPM;
     public Gamemanager gamemanager;
@@ -43,6 +44,7 @@ public class Player : MonoBehaviour
             SceneManager.LoadScene("Main");
         }
         UI_HP.text = string.Format("{0}", hp);
+        HP_Value.value = hp / 100;
     }
 
     private void Awake()

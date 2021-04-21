@@ -4,6 +4,7 @@ ScriptsOnlyBuild:
     - Bullet
     - CanvasSetting
     - DontDestroyOnLoad
+    - DontDestroyOnLoad2
     - EnemySpawn
     - FpsCheck
     - GUN
@@ -98,31 +99,31 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 12696}
     - Class: 114
-      Script: {instanceID: 12730}
+      Script: {instanceID: 12732}
     - Class: 114
-      Script: {instanceID: 12782}
+      Script: {instanceID: 12784}
     - Class: 114
-      Script: {instanceID: 12786}
+      Script: {instanceID: 12788}
     - Class: 114
-      Script: {instanceID: 12986}
+      Script: {instanceID: 12988}
     - Class: 114
-      Script: {instanceID: 13218}
+      Script: {instanceID: 13220}
     - Class: 114
-      Script: {instanceID: 13400}
+      Script: {instanceID: 13402}
     - Class: 114
-      Script: {instanceID: 13538}
+      Script: {instanceID: 13540}
     - Class: 114
-      Script: {instanceID: 13644}
+      Script: {instanceID: 13646}
     - Class: 114
-      Script: {instanceID: 13750}
+      Script: {instanceID: 13752}
     - Class: 114
-      Script: {instanceID: 13890}
+      Script: {instanceID: 13892}
     - Class: 114
-      Script: {instanceID: 13922}
+      Script: {instanceID: 13924}
     - Class: 114
-      Script: {instanceID: 13938}
+      Script: {instanceID: 13940}
     - Class: 114
-      Script: {instanceID: 13976}
+      Script: {instanceID: 13978}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 120
@@ -189,29 +190,31 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 12536}
     - Class: 114
-      Script: {instanceID: 12822}
+      Script: {instanceID: 12720}
     - Class: 114
-      Script: {instanceID: 12986}
+      Script: {instanceID: 12824}
     - Class: 114
-      Script: {instanceID: 13056}
+      Script: {instanceID: 12988}
     - Class: 114
-      Script: {instanceID: 13198}
+      Script: {instanceID: 13058}
     - Class: 114
-      Script: {instanceID: 13244}
+      Script: {instanceID: 13200}
     - Class: 114
-      Script: {instanceID: 13260}
+      Script: {instanceID: 13246}
     - Class: 114
-      Script: {instanceID: 13400}
+      Script: {instanceID: 13262}
     - Class: 114
-      Script: {instanceID: 13538}
+      Script: {instanceID: 13402}
     - Class: 114
-      Script: {instanceID: 13544}
+      Script: {instanceID: 13540}
     - Class: 114
-      Script: {instanceID: 13720}
+      Script: {instanceID: 13546}
     - Class: 114
-      Script: {instanceID: 13922}
+      Script: {instanceID: 13722}
     - Class: 114
-      Script: {instanceID: 13938}
+      Script: {instanceID: 13924}
+    - Class: 114
+      Script: {instanceID: 13940}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -357,7 +360,7 @@ ScriptsOnlyBuild:
     className: SignalAsset
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+      Hash: 640613d0a8e18eda637e96133326a891
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Scene
@@ -381,7 +384,7 @@ ScriptsOnlyBuild:
     className: PhysicsRaycaster
   - hash:
       serializedVersion: 2
-      Hash: 66d4609d10894181218b52f9e38a72b1
+      Hash: 0992bb60f15a143436d8589839bd1045
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Player
@@ -501,6 +504,12 @@ ScriptsOnlyBuild:
     className: Rotation
   - hash:
       serializedVersion: 2
+      Hash: ea05a549a8e557a9238b4c606993ca66
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: DontDestroyOnLoad2
+  - hash:
+      serializedVersion: 2
       Hash: 5b29d288558fc9f5e16ea29848cdf8a4
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
@@ -615,7 +624,7 @@ ScriptsOnlyBuild:
     className: Test_Camera
   - hash:
       serializedVersion: 2
-      Hash: 9b5560a6d4dae59fd5a5f873b26d2da9
+      Hash: 2202451f7fb4ad7dc496833ed9aaf362
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Gamemanager

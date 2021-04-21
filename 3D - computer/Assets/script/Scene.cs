@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class Scene : MonoBehaviour
 {
-    private Gamemanager gameManager;
+    public Gamemanager gameManager;
     public DontDestroyOnLoad2 main_canvas;
     public  void ChangeSceneBtn()
     {

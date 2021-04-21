@@ -7,11 +7,8 @@ using UnityEngine.UI;
 
 public class PetAI : MonoBehaviour
 {
-
     public Transform enemytarget;
-
     //NavMeshAgent enemynav;
-
     /*void Awake()
     {
         //enemynav = GetComponent<NavMeshAgent>();
@@ -26,6 +23,5 @@ public class PetAI : MonoBehaviour
     {
         transform.LookAt(enemytarget);
         enemytarget = GameObject.FindWithTag("enemy").GetComponent<Transform>();
-        //enemynav.SetDestination(enemytarget.position);
     }
 }

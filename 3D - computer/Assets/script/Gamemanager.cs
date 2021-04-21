@@ -7,6 +7,7 @@ public class Gamemanager : MonoBehaviour
 {
     public int Money;
     public money wallet;
+    public Money2 Game_Money; 
     public DontDestroyOnLoad2 main_canvas;
     public int Arr;
     public GUN gun;
@@ -31,6 +32,7 @@ public class Gamemanager : MonoBehaviour
     {
         Money += Get;
         wallet.UI_Update(Money);
+        Game_Money.UI_Update(Money);
         //UI_Update();
     }
     public void die()
@@ -39,7 +41,8 @@ public class Gamemanager : MonoBehaviour
     }
     public void load()
     {
-        wallet = GameObject.FindObjectOfType<money>();
+        Game_Money = GameObject.FindObjectOfType<Money2>();
+        Game_Money.UI_Update(Money);
     }
     public void Update()
     {
