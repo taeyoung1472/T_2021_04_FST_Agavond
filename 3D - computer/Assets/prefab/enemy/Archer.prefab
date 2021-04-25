@@ -165,7 +165,6 @@ MonoBehaviour:
   hp: 100
   target: {fileID: 0}
   DropMoney: 50
-  PlayerMoney: 0
 --- !u!195 &4040843577095745588
 NavMeshAgent:
   m_ObjectHideFlags: 0

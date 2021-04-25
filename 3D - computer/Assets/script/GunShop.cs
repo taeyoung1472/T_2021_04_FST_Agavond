@@ -38,6 +38,7 @@ public class GunShop : MonoBehaviour
     }
     private void Update()
     {
+        Money = FindObjectOfType<Gamemanager>().Money;
         //GameManager.UI_Update();
     }
     public void Enter()
@@ -169,5 +170,6 @@ public class GunShop : MonoBehaviour
     public void UI_Update()
     {
         Money_UI.text = string.Format("{0}", Money);
+        Money = FindObjectOfType<Gamemanager>().Money;
     }
 }
