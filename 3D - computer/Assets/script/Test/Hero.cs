@@ -13,8 +13,6 @@ public class Hero : MonoBehaviour
     public float jumpSpeed = 4.0F;
     public float gravity = 9.81F;
     private Vector3 moveDirection = Vector3.zero;
-    public float X;
-    public float Z;
     private bool Move;
     //조이스틱 관련
     public Joystick joystick;
@@ -35,23 +33,6 @@ public class Hero : MonoBehaviour
     }
     void Update ()
     {
-        if (Move == true)
-        {
-            Debug.Log("움직이는중");
-        }
-        else
-        {
-            X = 0;
-            Z = 0;
-        }
-        if (Input.GetKey(KeyCode.LeftShift))
-        {
-            speed = runspeed;
-        }
-        else
-        {
-            speed = basicspeed;
-        }
         if (cc.isGrounded)
         {
             moveDirection = new Vector3(joystick.Horizontal, 0, joystick.Vertical);

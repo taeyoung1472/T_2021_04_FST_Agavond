@@ -42,7 +42,7 @@ public class TsetRotation : MonoBehaviour
                     {
                         leftInput = t.fingerId;
                     }
-                    else if (click == true && leftInput == -1)
+                    else if (click == false && leftInput == -1)
                     {
                         rightInput = t.fingerId;
                     }
