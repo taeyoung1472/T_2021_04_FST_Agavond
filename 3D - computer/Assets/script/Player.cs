@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     public int Range;
     RaycastHit hit;
     public Slider HP_Value;
+    public Slider HP_Back;
     public float ShootDelay;
     public float RPM;
     public Gamemanager gamemanager;
@@ -44,7 +45,6 @@ public class Player : MonoBehaviour
             SceneManager.LoadScene("Main");
         }
         UI_HP.text = string.Format("{0}", hp);
-        HP_Value.value = hp / 100;
     }
 
     private void Awake()
@@ -78,11 +78,13 @@ public class Player : MonoBehaviour
     {
         arrayAudio[4].Play();
         hp = hp - 20;
+        StartCoroutine(HP_Update());
     }
     void heal()
     {
         arrayAudio[3].Play();
         hp = hp + 40;
+        StartCoroutine(HP_Update());
     }
     void fire()
     {
@@ -93,8 +95,15 @@ public class Player : MonoBehaviour
             if (hit.transform.CompareTag("NEWCLEAR"))
             {
                 hp--;
+                StartCoroutine(HP_Update());
             }
         }
+    }
+    private IEnumerator HP_Update()
+    {
+        HP_Value.value = hp / 100;
+        yield return new WaitForSeconds(1f);
+        HP_Back.value = hp / 100;
     }
     /*IEnumerator Dot()
     {

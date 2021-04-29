@@ -38,11 +38,11 @@ public class TsetRotation : MonoBehaviour
             switch (t.phase)
             {
                 case TouchPhase.Began:
-                    if (click == true && leftInput == -1)
+                    if (t.position.x > 980&& leftInput == -1)
                     {
                         leftInput = t.fingerId;
                     }
-                    else if (click == false && leftInput == -1)
+                    else if (t.position.x < 980 && leftInput == -1)
                     {
                         rightInput = t.fingerId;
                     }
@@ -75,7 +75,7 @@ public class TsetRotation : MonoBehaviour
     }
     void LookAround()
     {
-        //cameraPitch = Mathf.Clamp(cameraPitch + lookInput.y * -cameraSensitvivity * Time.deltaTime, -90f, 90f);y축 회전제한(필요없음)
+        cameraPitch = Mathf.Clamp(cameraPitch + lookInput.y * -cameraSensitvivity * Time.deltaTime, -45f, 45f);
         cameraTransform.localRotation = Quaternion.Euler(cameraPitch, 0, 0);
 
         transform.Rotate(transform.up, lookInput.x * cameraSensitvivity * Time.deltaTime);

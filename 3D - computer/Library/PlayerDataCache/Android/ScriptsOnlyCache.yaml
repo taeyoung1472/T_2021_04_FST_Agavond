@@ -112,27 +112,27 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 13046}
     - Class: 114
-      Script: {instanceID: 13224}
+      Script: {instanceID: 13226}
     - Class: 114
-      Script: {instanceID: 13406}
+      Script: {instanceID: 13408}
     - Class: 114
-      Script: {instanceID: 13544}
+      Script: {instanceID: 13546}
     - Class: 114
-      Script: {instanceID: 13650}
+      Script: {instanceID: 13652}
     - Class: 114
-      Script: {instanceID: 13756}
+      Script: {instanceID: 13758}
     - Class: 114
-      Script: {instanceID: 13818}
+      Script: {instanceID: 13820}
     - Class: 114
-      Script: {instanceID: 13896}
+      Script: {instanceID: 13898}
     - Class: 114
-      Script: {instanceID: 13928}
+      Script: {instanceID: 13930}
     - Class: 114
-      Script: {instanceID: 13944}
-    - Class: 114
-      Script: {instanceID: 13980}
+      Script: {instanceID: 13946}
     - Class: 114
       Script: {instanceID: 13982}
+    - Class: 114
+      Script: {instanceID: 13984}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 120
@@ -207,23 +207,23 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 13062}
     - Class: 114
-      Script: {instanceID: 13204}
+      Script: {instanceID: 13206}
     - Class: 114
-      Script: {instanceID: 13250}
+      Script: {instanceID: 13252}
     - Class: 114
-      Script: {instanceID: 13266}
+      Script: {instanceID: 13268}
     - Class: 114
-      Script: {instanceID: 13406}
+      Script: {instanceID: 13408}
     - Class: 114
-      Script: {instanceID: 13544}
+      Script: {instanceID: 13546}
     - Class: 114
-      Script: {instanceID: 13550}
+      Script: {instanceID: 13552}
     - Class: 114
-      Script: {instanceID: 13726}
+      Script: {instanceID: 13728}
     - Class: 114
-      Script: {instanceID: 13928}
+      Script: {instanceID: 13930}
     - Class: 114
-      Script: {instanceID: 13944}
+      Script: {instanceID: 13946}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -631,6 +631,12 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GunArrLoader
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Event
   - hash:
       serializedVersion: 2
       Hash: 68262dbca6a07b59f2de3f5dd1b6dcec
