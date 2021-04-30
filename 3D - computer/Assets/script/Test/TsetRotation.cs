@@ -7,15 +7,16 @@ public class TsetRotation : MonoBehaviour
     public Transform cameraTransform;
     public float cameraSensitvivity;
 
-    int leftInput, rightInput;
-
+    public int leftInput, rightInput;
     Vector2 lookInput;
     float cameraPitch;
-    public bool click;
+    public float halfScreenWidth;
     void Start()
     {
         leftInput = -1;
         rightInput = -1;
+
+        halfScreenWidth = Screen.width / 2;
     }
  
     // Update is called once per frame
@@ -23,26 +24,25 @@ public class TsetRotation : MonoBehaviour
     {
         GetTouchInput();
 
-        if(rightInput != -1)
+        if (rightInput != -1)
         {
             LookAround();
         }
-        
     }
     void GetTouchInput()
     {
         for (int i = 0; i < Input.touchCount; i++)
-        {
+        {   
             Touch t = Input.GetTouch(i);
 
             switch (t.phase)
             {
                 case TouchPhase.Began:
-                    if (t.position.x > 980&& leftInput == -1)
+                    if (t.position.x < halfScreenWidth&& leftInput == -1)
                     {
                         leftInput = t.fingerId;
                     }
-                    else if (t.position.x < 980 && leftInput == -1)
+                    if (t.position.x > halfScreenWidth && leftInput == -1)
                     {
                         rightInput = t.fingerId;
                     }
@@ -51,17 +51,17 @@ public class TsetRotation : MonoBehaviour
                 case TouchPhase.Canceled:
                     if (t.fingerId == leftInput)
                     {
-                        leftInput = t.fingerId;
+                        leftInput = -1;
                     }
                     else if (t.fingerId == rightInput)
                     {
-                        rightInput = t.fingerId;
+                        rightInput = -1;
                     }
                     break;
                 case TouchPhase.Moved:
                     if(t.fingerId == rightInput)
                     {
-                        lookInput = t.deltaPosition;
+                        lookInput = t.deltaPosition * cameraSensitvivity * Time.deltaTime;
                     }
                     break;
                 case TouchPhase.Stationary:
@@ -75,19 +75,9 @@ public class TsetRotation : MonoBehaviour
     }
     void LookAround()
     {
-        cameraPitch = Mathf.Clamp(cameraPitch + lookInput.y * -cameraSensitvivity * Time.deltaTime, -45f, 45f);
+        cameraPitch = Mathf.Clamp(cameraPitch - lookInput.y, -20f, 20f);
         cameraTransform.localRotation = Quaternion.Euler(cameraPitch, 0, 0);
 
-        transform.Rotate(transform.up, lookInput.x * cameraSensitvivity * Time.deltaTime);
-    }
-    public void OnClick()
-    {
-        click = true;
-        Debug.Log("회전시작");
-    }
-    public void OutClick()
-    {
-        click = false;
-        Debug.Log("회전끝");
+        transform.Rotate(transform.up, lookInput.x);
     }
 }
