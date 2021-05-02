@@ -26,7 +26,7 @@ public class TsetRotation : MonoBehaviour
 
         if (rightInput != -1)
         {
-            LookAround();
+            LookAround(); 
         }
     }
     void GetTouchInput()
@@ -80,4 +80,4 @@ public class TsetRotation : MonoBehaviour
 
         transform.Rotate(transform.up, lookInput.x);
     }
-}
+} 
