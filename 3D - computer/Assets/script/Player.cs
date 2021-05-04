@@ -17,7 +17,8 @@ public class Player : MonoBehaviour
     public float ShootDelay;
     public float RPM;
     public Gamemanager gamemanager;
-
+    public int serveItem;
+    public int mainItem;
     void Start()
     {
         gamemanager = FindObjectOfType<Gamemanager>();
@@ -45,8 +46,9 @@ public class Player : MonoBehaviour
             SceneManager.LoadScene("Main");
         }
         UI_HP.text = string.Format("{0}", hp);
+        if (mainItem >= 1 && serveItem >= 5)
+            Debug.Log("미션성공!");
     }
-
     private void Awake()
     {
         //GetPoint = GameObject.FindWithTag("enemy").GetComponent<enemy>().Point;
@@ -69,6 +71,12 @@ public class Player : MonoBehaviour
         {
             damage();
         }
+        if (col.collider.tag == "ServeItem")
+            serveItem++;
+        if (col.collider.tag == "ServeItem") Destroy(col.gameObject);
+        if (col.collider.tag == "MainItem")
+            mainItem++;
+        if (col.collider.tag == "MainItem") Destroy(col.gameObject);
         else
         {
             dotDamage = false;
