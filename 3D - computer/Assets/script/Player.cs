@@ -19,10 +19,16 @@ public class Player : MonoBehaviour
     public Gamemanager gamemanager;
     public int serveItem;
     public int mainItem;
+    public Text mainobject;
+    public Text serveobject;
+    public int maingoalpoint;
+    public int servegoalpoint;
+    public GameObject success;
     void Start()
     {
         gamemanager = FindObjectOfType<Gamemanager>();
         arrayAudio = GameObject.Find("Sound").GetComponents<AudioSource>();
+        UpdateUI();
     }
 
     // Update is called once per frame
@@ -33,7 +39,7 @@ public class Player : MonoBehaviour
         ShootDelay += Time.deltaTime;
         if (ShootDelay > RPM)
         {
-               fire();
+            fire();
         }
         if (hp > 100)
         {
@@ -46,8 +52,8 @@ public class Player : MonoBehaviour
             SceneManager.LoadScene("Main");
         }
         UI_HP.text = string.Format("{0}", hp);
-        if (mainItem >= 1 && serveItem >= 5)
-            Debug.Log("미션성공!");
+        if (mainItem >= maingoalpoint && serveItem >= servegoalpoint)
+            success.SetActive(true);
     }
     private void Awake()
     {
@@ -72,10 +78,16 @@ public class Player : MonoBehaviour
             damage();
         }
         if (col.collider.tag == "ServeItem")
+        {
             serveItem++;
+            UpdateUI();
+        }
         if (col.collider.tag == "ServeItem") Destroy(col.gameObject);
         if (col.collider.tag == "MainItem")
+        {
             mainItem++;
+            UpdateUI();
+        }
         if (col.collider.tag == "MainItem") Destroy(col.gameObject);
         else
         {
@@ -96,7 +108,7 @@ public class Player : MonoBehaviour
     }
     void fire()
     {
-        Debug.DrawRay(transform.position, new Vector3(0,-3,0) * Range, Color.yellow, 2f);
+        Debug.DrawRay(transform.position, new Vector3(0, -3, 0) * Range, Color.yellow, 2f);
         if (Physics.Raycast(transform.position, new Vector3(0, -3, 0), out hit, Range))
         {
             ShootDelay = 0;
@@ -121,4 +133,13 @@ public class Player : MonoBehaviour
             yield return new WaitForSeconds(2.0f);
         }
     }*/
+    void UpdateUI()
+    {
+        mainobject.text = string.Format("{0}/{1}", mainItem, maingoalpoint);
+        serveobject.text = string.Format("{0}/{1}", serveItem, servegoalpoint);
+    }
+    public void Timerend()
+    {
+        UpdateUI();
+    }
 }

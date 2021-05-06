@@ -24,9 +24,11 @@ public class Timer : MonoBehaviour
     }
     private void OnCollisionEnter(Collision col)
     {
-        if (col.collider.tag == "player" && istake == true)
+        if (col.collider.tag == "Player" && istake == true)
+        {
             istake = false;
             StartCoroutine(OnTimer());
+        }
     }
     private IEnumerator OnTimer()
     {
@@ -39,6 +41,7 @@ public class Timer : MonoBehaviour
             yield return new WaitForSeconds(1f);
         }
         player.mainItem += 1;
+        player.Timerend();
         timeUi.SetActive(false);
         Destroy(gameObject);
     }
