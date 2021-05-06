@@ -7,18 +7,18 @@ public class Bullet : MonoBehaviour
 
     public float Bulletspeed = 100f;
     public int damdage;
-
+    private Rigidbody rigidbody;
     private void Start()
     {
-        StartCoroutine(Destroy());
+        rigidbody = GetComponent<Rigidbody>();
+        rigidbody.AddForce(Vector3.forward * Bulletspeed);
     }
     void Update()
     {
-        transform.Translate(Vector3.forward * Bulletspeed * Time.deltaTime);
+        
     }
-    IEnumerator Destroy()
+    private void OnCollisionEnter(Collision col)
     {
-        yield return new WaitForSeconds(1f);
         Destroy(gameObject);
     }
 }

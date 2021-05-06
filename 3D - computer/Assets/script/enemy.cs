@@ -37,4 +37,11 @@ public class enemy : MonoBehaviour
         }
         nav.SetDestination(target.position);
     }
+    private void OnCollisionEnter(Collision col)
+    {
+        if (col.transform.tag == "Bullet")
+        {
+            hp -= 50;
+        }
+    }
 }
