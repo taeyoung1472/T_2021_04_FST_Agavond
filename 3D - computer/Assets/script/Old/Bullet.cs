@@ -7,11 +7,10 @@ public class Bullet : MonoBehaviour
 
     public float Bulletspeed = 100f;
     public int damdage;
-    private Rigidbody rigidbody;
+    public Rigidbody rigidbody;
     private void Start()
     {
-        rigidbody = GetComponent<Rigidbody>();
-        rigidbody.AddForce(Vector3.forward * Bulletspeed);
+        rigidbody.AddForce(transform.forward * Bulletspeed);
     }
     void Update()
     {

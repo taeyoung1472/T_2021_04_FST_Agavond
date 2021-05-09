@@ -26,7 +26,7 @@ public class TsetRotation : MonoBehaviour
 
         if (rightInput != -1)
         {
-            LookAround(); 
+            LookAround();
         }
     }
     void GetTouchInput()
@@ -53,7 +53,7 @@ public class TsetRotation : MonoBehaviour
                     {
                         leftInput = -1;
                     }
-                    else if (t.fingerId == rightInput)
+                    if (t.fingerId == rightInput)
                     {
                         rightInput = -1;
                     }

@@ -15,7 +15,6 @@ public class MovementObject : MonoBehaviour
 
     void Update()
     {
-
         float x = Joystick.Horizontal();
         float z = Joystick.Vertical();
 
@@ -23,7 +22,5 @@ public class MovementObject : MonoBehaviour
         {
             transform.position += new Vector3(x, 0, z) * speed * Time.deltaTime;
         }
-        
     }
-
 }*/

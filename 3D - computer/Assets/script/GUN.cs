@@ -19,6 +19,7 @@ public class GUN : MonoBehaviour
     public bool Fire;
     public GameObject Bullet;
     public Transform FirePos;
+    public bool istick;
     //총 관련 UI
     public Text HUD;
     public Text UI_GunName;
@@ -39,30 +40,53 @@ public class GUN : MonoBehaviour
     void Start()
     {
         StartCoroutine(Reload());
+        StartCoroutine(Shoot());
     }
 
     // Update is called once per frame
     void Update()
     {
-        ShootDelay += Time.deltaTime;
-        if (Fire == true && ShootDelay > RPM[arr])
+        //ShootDelay += Time.deltaTime;
+        /*if (Fire == true)
         {
-            Shoot();
-        }
+            StartCoroutine(Shoot());
+        }*/
     }
     public IEnumerator Reload()
     {
+        arrayAudio[2].Play();
         isFire = false;
         yield return new WaitForSeconds(ReloadTime);
         isFire = true;
         curammo = magammo[arr];
+        HUD.text = string.Format("{0} / {1}", curammo, magammo[arr]);
     }
-    void fire()
+    /*void fire()
     {
-        ShootDelay = 0;
+        Instantiate(Bullet, FirePos.transform.position, FirePos.transform.rotation);
         curammo--;
         arrayAudio[0].Play();
-        Instantiate(Bullet, FirePos.transform.position, FirePos.transform.rotation);
+        ShootDelay = 0;
+    }*/
+    private IEnumerator Shoot()
+    {
+        while (true)
+        {
+            if (Fire == true && curammo >= 1)
+            {
+                Instantiate(Bullet, FirePos.transform.position, FirePos.transform.rotation);
+                arrayAudio[0].Play();
+                curammo--;
+                HUD.text = string.Format("{0} / {1}", curammo, magammo[arr]);
+                istick = true;
+            }
+            if(Fire == true && curammo == 0 && istick == true)
+            {
+                istick = false;
+                arrayAudio[1].Play();
+            }
+            yield return new WaitForSeconds(RPM[arr]);
+        }
     }
     void empty()
     {
@@ -82,12 +106,11 @@ public class GUN : MonoBehaviour
     }
     public void reroad()
     {
-       arrayAudio[2].Play();
        StartCoroutine("Reload");
     }
-    private void Shoot()
+    /*public void Shoot()
     {
-        if (curammo > 0)
+        if (curammo > 0 && ShootDelay > RPM[arr])
         {
             fire();
         }
@@ -97,7 +120,7 @@ public class GUN : MonoBehaviour
         }
         HUD.text = string.Format("{0} / {1}", curammo, magammo[arr]);
         UI_GunName.text = string.Format("{0}", GunName[arr]);
-    }
+    }*/
 }
         /*ShootDelay = 0f;
         Debug.DrawRay(transform.position, transform.forward * Range, Color.yellow, 0.1f);

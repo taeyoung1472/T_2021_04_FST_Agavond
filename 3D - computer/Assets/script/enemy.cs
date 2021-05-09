@@ -41,7 +41,7 @@ public class enemy : MonoBehaviour
     {
         if (col.transform.tag == "Bullet")
         {
-            hp -= 50;
+            hp -= col.gameObject.GetComponent<Bullet>().damdage;
         }
     }
 }

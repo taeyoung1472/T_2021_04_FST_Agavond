@@ -8,14 +8,15 @@ public class archer : MonoBehaviour
     public float abilityDelay;
     public float cooltime;
     public int damdage;
-    public GameObject cube;
+    private enemy enemy;
+    public Vector3 targetPos;
 
     public GameObject Bullet;
     public GameObject FirePos;
     // Start is called before the first frame update
     void Start()
     {
-
+        enemy = GetComponent<enemy>();
     }
     private void Awake()
     {
@@ -34,6 +35,7 @@ public class archer : MonoBehaviour
     }
     void fire()
     {
-        Instantiate(Bullet, FirePos.transform.position, FirePos.transform.rotation);
+        targetPos = new Vector3(enemy.target.position.x, enemy.target.position.y - 1f, enemy.target.position.z);
+        Instantiate(Bullet, targetPos,FirePos.transform.rotation);
     }
 }

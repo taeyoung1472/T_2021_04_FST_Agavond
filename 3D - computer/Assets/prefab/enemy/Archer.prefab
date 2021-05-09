@@ -145,10 +145,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Bulletspeed: 30
   abilityDelay: 0
-  cooltime: 1
+  cooltime: 3
   damdage: 30
-  cube: {fileID: 0}
-  Bullet: {fileID: 786516086829708279, guid: c5c905d8de96ebe4bb8c14b27f6a4d3f, type: 3}
+  targetPos: {x: 0, y: 0, z: 0}
+  Bullet: {fileID: 5584937564843421632, guid: 7a9980e1ff5705d49b36f06d99f61056, type: 3}
   FirePos: {fileID: 4040843576271285819}
 --- !u!114 &4040843577095745589
 MonoBehaviour:
