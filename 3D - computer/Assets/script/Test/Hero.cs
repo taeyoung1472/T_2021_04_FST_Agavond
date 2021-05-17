@@ -14,6 +14,7 @@ public class Hero : MonoBehaviour
     public float gravity = 9.81F;
     private Vector3 moveDirection = Vector3.zero;
     private bool Move;
+    private bool isjump;
     //조이스틱 관련
     public Joystick joystick;
     private void Awake()
@@ -38,8 +39,11 @@ public class Hero : MonoBehaviour
             moveDirection = new Vector3(joystick.Horizontal, 0, joystick.Vertical);
             moveDirection = transform.TransformDirection(moveDirection);
             moveDirection *= speed;
-            if (Input.GetButton("Jump"))
+            if (isjump == true)
+            {
                 moveDirection.y = jumpSpeed;
+                isjump = false;
+            }
         }
         moveDirection.y -= gravity * Time.deltaTime;
         cc.Move(moveDirection * Time.deltaTime);
@@ -85,6 +89,10 @@ public class Hero : MonoBehaviour
         speed = 1;
         yield return new WaitForSeconds(2f);
         speed = basicspeed;
+    }
+    public void onjump()
+    {
+        isjump = true;
     }
 }
 

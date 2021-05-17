@@ -10,18 +10,25 @@ public class Player : MonoBehaviour
     public Text UI_HP;
     public AudioSource[] arrayAudio;
     public bool dotDamage;
-    public int Range;
+    //public int Range;
     RaycastHit hit;
     public Slider HP_Value;
     public Slider HP_Back;
     public float ShootDelay;
     public float RPM;
     public Gamemanager gamemanager;
-
+    //public int serveItem;
+    //public int mainItem;
+    /*public Text mainobject;
+    public Text serveobject;
+    public int maingoalpoint;
+    public int servegoalpoint;
+    public GameObject success;*/
     void Start()
     {
         gamemanager = FindObjectOfType<Gamemanager>();
         arrayAudio = GameObject.Find("Sound").GetComponents<AudioSource>();
+        //UpdateUI();
     }
 
     // Update is called once per frame
@@ -29,11 +36,11 @@ public class Player : MonoBehaviour
     {
         //GetMoney = GameObject.FindWithTag("enemy").GetComponent<enemy>().PlayerMoney;
         //money += GetMoney;
-        ShootDelay += Time.deltaTime;
+        /*ShootDelay += Time.deltaTime;
         if (ShootDelay > RPM)
         {
-               fire();
-        }
+            fire();
+        }*/
         if (hp > 100)
         {
             hp = 100;
@@ -44,13 +51,13 @@ public class Player : MonoBehaviour
             gamemanager.die();
             SceneManager.LoadScene("Main");
         }
-        UI_HP.text = string.Format("{0}", hp);
+        //if (mainItem >= maingoalpoint && serveItem >= servegoalpoint)
+        //    success.SetActive(true);
     }
-
-    private void Awake()
+    /*private void Awake()
     {
         //GetPoint = GameObject.FindWithTag("enemy").GetComponent<enemy>().Point;
-    }
+    }*/
 
     void OnCollisionEnter(Collision col)
     {
@@ -69,10 +76,22 @@ public class Player : MonoBehaviour
         {
             damage();
         }
+        /*if (col.collider.tag == "ServeItem")
+        {
+            serveItem++;
+            UpdateUI();
+        }
+        if (col.collider.tag == "ServeItem") Destroy(col.gameObject);
+        if (col.collider.tag == "MainItem")
+        {
+            mainItem++;
+            UpdateUI();
+        }
+        if (col.collider.tag == "MainItem") Destroy(col.gameObject);
         else
         {
             dotDamage = false;
-        }
+        }*/
     }
     void damage()
     {
@@ -86,9 +105,9 @@ public class Player : MonoBehaviour
         hp = hp + 40;
         StartCoroutine(HP_Update());
     }
-    void fire()
+    /*void fire()
     {
-        Debug.DrawRay(transform.position, new Vector3(0,-3,0) * Range, Color.yellow, 2f);
+        Debug.DrawRay(transform.position, new Vector3(0, -3, 0) * Range, Color.yellow, 2f);
         if (Physics.Raycast(transform.position, new Vector3(0, -3, 0), out hit, Range))
         {
             ShootDelay = 0;
@@ -98,9 +117,10 @@ public class Player : MonoBehaviour
                 StartCoroutine(HP_Update());
             }
         }
-    }
+    }*/
     private IEnumerator HP_Update()
     {
+        UI_HP.text = string.Format("{0}", hp);
         HP_Value.value = hp / 100;
         yield return new WaitForSeconds(1f);
         HP_Back.value = hp / 100;
@@ -112,5 +132,14 @@ public class Player : MonoBehaviour
             hp--;
             yield return new WaitForSeconds(2.0f);
         }
+    }*/
+    /*void UpdateUI()
+    {
+        mainobject.text = string.Format("{0}/{1}", mainItem, maingoalpoint);
+        serveobject.text = string.Format("{0}/{1}", serveItem, servegoalpoint);
+    }*/
+    /*public void Timerend()
+    {
+        UpdateUI();
     }*/
 }

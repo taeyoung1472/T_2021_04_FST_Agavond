@@ -7,7 +7,7 @@ public class GUN : MonoBehaviour
 {
     //총관련
     private string[] GunName = {"M1911", "PL15", "Revolver", "MP5", "AK74", "SA58", "SVD", "M24", "M249"};
-    private int[] damage = { 20, 35, 100, 30, 40, 60, 100, 200, 40 };
+    //private int[] damage = { 20, 35, 100, 30, 40, 60, 100, 200, 40 };
     private float[] RPM = { 0.2f, 0.15f, 1f, 0.067f, 0.1f, 0.12f, 0.5f, 2f, 0.075f };
     public int curammo;
     private int[] magammo = { 7, 15, 6, 30, 30, 20, 10, 5, 99 };
@@ -19,13 +19,14 @@ public class GUN : MonoBehaviour
     public bool Fire;
     public GameObject Bullet;
     public Transform FirePos;
+    public bool istick;
     //총 관련 UI
     public Text HUD;
     public Text UI_GunName;
     //총 관련 오디오
     public AudioSource[] arrayAudio;
     
-    RaycastHit hit;
+    //RaycastHit hit;
 
     float Range = 200f;
 
@@ -39,58 +40,52 @@ public class GUN : MonoBehaviour
     void Start()
     {
         StartCoroutine(Reload());
+        StartCoroutine(Shoot());
     }
 
     // Update is called once per frame
     void Update()
     {
-        ShootDelay += Time.deltaTime;
-        if (Fire == true && ShootDelay > RPM[arr])//총쏘기 판단
+        //ShootDelay += Time.deltaTime;
+        /*if (Fire == true)
         {
-            if (isFire == true)
-            {
-                if (curammo > 0)
-                {
-                    fire();
-                }
-                else
-                {
-                    empty();
-                }
-            }
-        }
-        /*if (Input.GetKeyDown(KeyCode.R))//장전
-        {
-            arrayAudio[2].Play();
-            StartCoroutine("Reload");
+            StartCoroutine(Shoot());
         }*/
-        HUD.text = string.Format("{0} / {1}", curammo, magammo[arr]);
-        UI_GunName.text = string.Format("{0}", GunName[arr]);
     }
     public IEnumerator Reload()
     {
+        arrayAudio[2].Play();
         isFire = false;
         yield return new WaitForSeconds(ReloadTime);
         isFire = true;
         curammo = magammo[arr];
+        HUD.text = string.Format("{0} / {1}", curammo, magammo[arr]);
     }
-    void fire()
+    /*void fire()
     {
-        curammo--;
-
-        arrayAudio[0].Play();
         Instantiate(Bullet, FirePos.transform.position, FirePos.transform.rotation);
-        ShootDelay = 0f;
-        Debug.DrawRay(transform.position, transform.forward * Range, Color.yellow, 0.1f);
-        if (Physics.Raycast(transform.position, transform.forward, out hit, Range))
+        curammo--;
+        arrayAudio[0].Play();
+        ShootDelay = 0;
+    }*/
+    private IEnumerator Shoot()
+    {
+        while (true)
         {
-            if (hit.transform.GetComponent<enemy>())
+            if (Fire == true && curammo >= 1)
             {
-                hit.transform.GetComponent<enemy>().hp -= damage[arr];
-                arrayAudio[5].Play();
+                Instantiate(Bullet, FirePos.transform.position, FirePos.transform.rotation);
+                arrayAudio[0].Play();
+                curammo--;
+                HUD.text = string.Format("{0} / {1}", curammo, magammo[arr]);
+                istick = true;
             }
-            hit.transform.GetComponent<wall>().Hit_Count++;
-            
+            if(Fire == true && curammo == 0 && istick == true)
+            {
+                istick = false;
+                arrayAudio[1].Play();
+            }
+            yield return new WaitForSeconds(RPM[arr]);
         }
     }
     void empty()
@@ -111,7 +106,31 @@ public class GUN : MonoBehaviour
     }
     public void reroad()
     {
-       arrayAudio[2].Play();
        StartCoroutine("Reload");
     }
+    /*public void Shoot()
+    {
+        if (curammo > 0 && ShootDelay > RPM[arr])
+        {
+            fire();
+        }
+        else
+        {
+            empty();
+        }
+        HUD.text = string.Format("{0} / {1}", curammo, magammo[arr]);
+        UI_GunName.text = string.Format("{0}", GunName[arr]);
+    }*/
 }
+        /*ShootDelay = 0f;
+        Debug.DrawRay(transform.position, transform.forward * Range, Color.yellow, 0.1f);
+        if (Physics.Raycast(transform.position, transform.forward, out hit, Range))
+        {
+            if (hit.transform.GetComponent<enemy>())
+            {
+                hit.transform.GetComponent<enemy>().hp -= damage[arr];
+                arrayAudio[5].Play();
+            }
+            hit.transform.GetComponent<wall>().Hit_Count++;
+            
+        }*/
