@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TsetRotation : MonoBehaviour
+public class TouchRotation : MonoBehaviour
 {
     public Transform cameraTransform;
     public float cameraSensitvivity;

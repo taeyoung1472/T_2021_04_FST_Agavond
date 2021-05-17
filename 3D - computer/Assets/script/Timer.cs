@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 public class Timer : MonoBehaviour
 {
-    public Player player;
+    public MissionCheck missionCheck;
     public GameObject timeUi;
     public Text clock;
     public float Time;
@@ -13,7 +13,7 @@ public class Timer : MonoBehaviour
     void Start()
     {
         istake = true;
-        player = FindObjectOfType<Player>();
+        missionCheck = FindObjectOfType<MissionCheck>();
         timeUi.SetActive(false);
     }
 
@@ -40,8 +40,8 @@ public class Timer : MonoBehaviour
             UIupdate();
             yield return new WaitForSeconds(1f);
         }
-        player.mainItem += 1;
-        player.Timerend();
+        missionCheck.mainItem += 1;
+        missionCheck.UpdateUI();
         timeUi.SetActive(false);
         Destroy(gameObject);
     }

@@ -6,28 +6,11 @@ using UnityEngine.UI;
 public class Tool : MonoBehaviour
 {
     public GameObject btn;
-    public bool istouch;
-    public bool isuse;
-    public bool isclose;
     public GameObject panel;
-    // Start is called before the first frame update
     void Start()
     {
+        btn.SetActive(true);
         panel.SetActive(false);
-        btn.SetActive(false);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-    void OnCollisionEnter(Collision col)
-    {
-        if (col.collider.tag == "Player")
-        {
-            btn.SetActive(true);
-        }
     }
     public void Use()
     {
@@ -37,5 +20,6 @@ public class Tool : MonoBehaviour
     public void exit()
     {
         panel.SetActive(false);
+        btn.SetActive(true);
     }
 }

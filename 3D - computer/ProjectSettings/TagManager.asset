@@ -17,6 +17,7 @@ TagManager:
   - tool
   - MainItem
   - ServeItem
+  - Plant
   layers:
   - Default
   - TransparentFX
