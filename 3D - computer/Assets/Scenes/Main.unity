@@ -461,7 +461,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 83408022}
-  - component: {fileID: 83408021}
   m_Layer: 0
   m_Name: CanvasManager
   m_TagString: Untagged
@@ -469,19 +468,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &83408021
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 83408020}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 684768863fe28984882260fed35915c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Child: {fileID: 1810157659}
 --- !u!4 &83408022
 Transform:
   m_ObjectHideFlags: 0
@@ -2028,7 +2014,7 @@ RectTransform:
   m_Children:
   - {fileID: 710098655}
   m_Father: {fileID: 654989883}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
@@ -5500,11 +5486,11 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 317140021}
+  - {fileID: 725164737}
   - {fileID: 1787062519}
   - {fileID: 283055474}
   - {fileID: 1624777340}
   - {fileID: 1005153504}
-  - {fileID: 725164737}
   m_Father: {fileID: 1810157660}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5953,7 +5939,7 @@ RectTransform:
   m_Children:
   - {fileID: 1037929584}
   m_Father: {fileID: 654989883}
-  m_RootOrder: 5
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -5973,7 +5959,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 1204859910}
-  main_canvas: {fileID: 83408021}
+  main_canvas: {fileID: 0}
 --- !u!114 &725164739
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7613,7 +7599,7 @@ RectTransform:
   - {fileID: 1556667141}
   - {fileID: 1875544761}
   m_Father: {fileID: 654989883}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -9497,7 +9483,7 @@ MonoBehaviour:
   Money: 100000
   wallet: {fileID: 0}
   Game_Money: {fileID: 0}
-  main_canvas: {fileID: 83408021}
+  main_canvas: {fileID: 0}
   Arr: 0
   gun: {fileID: 0}
   maxarr: 0
@@ -11650,7 +11636,7 @@ RectTransform:
   m_Children:
   - {fileID: 170218697}
   m_Father: {fileID: 654989883}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -12356,7 +12342,7 @@ RectTransform:
   m_Children:
   - {fileID: 1756636821}
   m_Father: {fileID: 654989883}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -12481,7 +12467,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 1204859910}
-  main_canvas: {fileID: 83408021}
+  main_canvas: {fileID: 0}
 --- !u!1 &1801892794
 GameObject:
   m_ObjectHideFlags: 0
