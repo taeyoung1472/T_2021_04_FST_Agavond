@@ -25,7 +25,8 @@ public class GUN : MonoBehaviour
     public Text UI_GunName;
     //총 관련 오디오
     public AudioSource[] arrayAudio;
-    
+    //public int[] gunMod = { 1, 2, 3 };
+    //public int modArr;
     //RaycastHit hit;
 
     float Range = 200f;
@@ -39,6 +40,10 @@ public class GUN : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //if (arr == 2 || arr == 7 || arr == 6)
+        ///    modArr = 0;
+        //else
+        //    modArr = 1;
         StartCoroutine(Reload());
         StartCoroutine(Shoot());
     }
@@ -46,11 +51,7 @@ public class GUN : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //ShootDelay += Time.deltaTime;
-        /*if (Fire == true)
-        {
-            StartCoroutine(Shoot());
-        }*/
+
     }
     public IEnumerator Reload()
     {
@@ -61,16 +62,26 @@ public class GUN : MonoBehaviour
         curammo = magammo[arr];
         HUD.text = string.Format("{0} / {1}", curammo, magammo[arr]);
     }
-    /*void fire()
-    {
-        Instantiate(Bullet, FirePos.transform.position, FirePos.transform.rotation);
-        curammo--;
-        arrayAudio[0].Play();
-        ShootDelay = 0;
-    }*/
     private IEnumerator Shoot()
     {
-        while (true)
+        while(true)
+        {
+            if (Fire == true && curammo >= 1)
+            {
+                Instantiate(Bullet, FirePos.transform.position, FirePos.transform.rotation);
+                arrayAudio[0].Play();
+                curammo--;
+                HUD.text = string.Format("{0} / {1}", curammo, magammo[arr]);
+                istick = true;
+            }
+            if (Fire == true && curammo == 0 && istick == true)
+            {
+                istick = false;
+                arrayAudio[1].Play();
+            }
+            yield return new WaitForSeconds(RPM[arr]);
+        }
+        /*while (gunMod[modArr] == 2)
         {
             if (Fire == true && curammo >= 1)
             {
@@ -86,7 +97,7 @@ public class GUN : MonoBehaviour
                 arrayAudio[1].Play();
             }
             yield return new WaitForSeconds(RPM[arr]);
-        }
+        }*/
     }
     void empty()
     {
@@ -98,7 +109,16 @@ public class GUN : MonoBehaviour
     }
     public void ButtonShoot()
     {
-        Fire = true;
+        //if (gunMod[modArr] == 1)
+        //{
+            Fire = true;
+        //    StartCoroutine(Shoot());
+        //}
+        //if (gunMod[modArr] == 2)
+        //{
+        ///    Fire = true;
+        //}
+        //Fire = true;
     }
     public void ButtonShootStop()
     {
