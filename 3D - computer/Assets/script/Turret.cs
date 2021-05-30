@@ -6,14 +6,9 @@ using UnityEngine.UI;
 public class Turret : MonoBehaviour
 {
     //총관련
-    public string PetName;
-    public int damage;
-    public float RPM;
-    public int curammo;
-    public int magammo;
-    public float ShootDelay;
-    public float ReloadTime;
-    public bool isFire = true;
+    public int[] damage = { 1, 1, 1, 1, 1, 1 };
+    public float[] RPM = { 1, 1, 1, 1, 1, 1 };
+    public int arr;
     public GameObject Bullet;
     public Transform FirePos;
 
@@ -34,58 +29,15 @@ public class Turret : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        curammo = magammo;
+        StartCoroutine(Shoot());
     }
-
-    // Update is called once per frame
-    void Update()//if (Input.GetKeyDown(KeyCode.Mouse0))
+    private IEnumerator Shoot()
     {
-        ShootDelay += Time.deltaTime;
-        if (ShootDelay > RPM)//총쏘기 판단
+        while (true)
         {
-            if (isFire == true)
-            {
-                if (curammo > 0)
-                {
-                    fire();
-                }
-                else
-                {
-                    empty();
-                }
-            }
+            Instantiate(Bullet, FirePos.transform.position, FirePos.transform.rotation);
+            arrayAudio[0].Play();
+            yield return new WaitForSeconds(RPM[arr]);
         }
-        if (Input.GetKeyDown(KeyCode.R))//장전
-        {
-            arrayAudio[2].Play();
-            StartCoroutine("Reload");
-        }
-    }
-    public IEnumerator Reload()
-    {
-        isFire = false;
-        yield return new WaitForSeconds(ReloadTime);
-        isFire = true;
-    }
-    void fire()
-    {
-        arrayAudio[0].Play();
-        ShootDelay = 0f;
-        Debug.DrawRay(transform.position, transform.forward * Range, Color.yellow, 0.1f);
-        Instantiate(Bullet, FirePos.transform.position, FirePos.transform.rotation);
-        if (Physics.Raycast(transform.position, transform.forward, out hit, Range))
-        {
-            if (hit.transform.GetComponent<enemy>())
-            {
-                hit.transform.GetComponent<enemy>().hp -= damage;
-                //arrayAudio[5].Play();
-            }
-            hit.transform.GetComponent<wall>().Hit_Count++;
-
-        }
-    }
-    void empty()
-    {
-        arrayAudio[1].Play();
     }
 }
