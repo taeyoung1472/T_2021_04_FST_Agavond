@@ -97,4 +97,4 @@ MonoBehaviour:
   size: 0
   maxsize: 9
   speed: 20
-  explosion: {fileID: 5630305773353708008, guid: 07d83418629c5954382726e0894da9b8, type: 3}
+  explosion: {fileID: 5650796856827966538, guid: 3953cf44f4412a544a3f22d2f23c6433, type: 3}
