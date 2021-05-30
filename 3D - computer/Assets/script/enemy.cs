@@ -11,6 +11,8 @@ public class enemy : MonoBehaviour
     public Transform target;
     public int DropMoney;
     private money Money;
+    [SerializeField]
+    private MissionCheck mission;
 
     private Gamemanager gameManager;
     //public int Point;
@@ -19,6 +21,7 @@ public class enemy : MonoBehaviour
 
     void Awake()
     {
+        mission = GameObject.FindWithTag("Player").GetComponent<MissionCheck>();
         nav = GetComponent<NavMeshAgent>();
         target = GameObject.FindWithTag("Player").GetComponent<Transform>();
     }
@@ -32,6 +35,7 @@ public class enemy : MonoBehaviour
     {
         if (hp <= 0)
         {
+            mission.Kill();
             Destroy(gameObject);
             gameManager.GetMoney(DropMoney);
         }
@@ -42,6 +46,11 @@ public class enemy : MonoBehaviour
         if (col.transform.tag == "Bullet")
         {
             hp -= col.gameObject.GetComponent<Bullet>().damdage;
+        }
+        if (col.collider.tag == "Explosion")
+        {
+            hp -= 20;
+            Debug.Log(hp);
         }
     }
 }

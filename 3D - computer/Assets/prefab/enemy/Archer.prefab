@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 4040843577095745589}
   - component: {fileID: 4040843577095745588}
   - component: {fileID: 4040843577095745591}
+  - component: {fileID: -6520788843011093687}
   m_Layer: 0
   m_Name: Archer
   m_TagString: enemy
@@ -165,6 +166,7 @@ MonoBehaviour:
   hp: 100
   target: {fileID: 0}
   DropMoney: 50
+  mission: {fileID: 0}
 --- !u!195 &4040843577095745588
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -203,3 +205,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 94
   m_CollisionDetection: 0
+--- !u!95 &-6520788843011093687
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4040843577095745590}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c6d876aa301322846b919fbafd9fc0eb, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

@@ -11,6 +11,7 @@ public class Bullet : MonoBehaviour
     private void Start()
     {
         rigidbody.AddForce(transform.forward * Bulletspeed);
+        StartCoroutine(Destroy());
     }
     void Update()
     {
@@ -18,6 +19,11 @@ public class Bullet : MonoBehaviour
     }
     private void OnCollisionEnter(Collision col)
     {
+        Destroy(gameObject);
+    }
+    private IEnumerator Destroy()
+    {
+        yield return new WaitForSeconds(2f);
         Destroy(gameObject);
     }
 }

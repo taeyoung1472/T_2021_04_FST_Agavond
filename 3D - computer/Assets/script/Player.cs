@@ -26,6 +26,7 @@ public class Player : MonoBehaviour
     public GameObject success;*/
     void Start()
     {
+        StartCoroutine(HP_Update());
         gamemanager = FindObjectOfType<Gamemanager>();
         arrayAudio = GameObject.Find("Sound").GetComponents<AudioSource>();
         //UpdateUI();
@@ -44,11 +45,12 @@ public class Player : MonoBehaviour
         if (hp > 100)
         {
             hp = 100;
+            StartCoroutine(HP_Update());
         }
         if (hp <= 0)
         {
             //Destroy(gameObject);
-            gamemanager.die();
+            //gamemanager.die();
             SceneManager.LoadScene("Main");
         }
         //if (mainItem >= maingoalpoint && serveItem >= servegoalpoint)
@@ -66,7 +68,7 @@ public class Player : MonoBehaviour
         if (col.collider.tag == "enemy bullet") Destroy(col.gameObject);
         if (col.collider.tag == "enemy")
         {
-            damage();
+            damage(20);
         }
         if (col.collider.tag == "Item")
         {
@@ -74,7 +76,11 @@ public class Player : MonoBehaviour
         }
         if (col.collider.tag == "enemy bullet")
         {
-            damage();
+            damage(20);
+        }
+        if (col.collider.tag == "Explosion")
+        {
+            damage(col.gameObject.GetComponent<Explosion_Effect>().damdage);
         }
         /*if (col.collider.tag == "ServeItem")
         {
@@ -93,10 +99,10 @@ public class Player : MonoBehaviour
             dotDamage = false;
         }*/
     }
-    void damage()
+    void damage(float damage)
     {
         arrayAudio[4].Play();
-        hp = hp - 20;
+        hp = hp - damage;
         StartCoroutine(HP_Update());
     }
     void heal()

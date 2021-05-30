@@ -18,6 +18,8 @@ TagManager:
   - MainItem
   - ServeItem
   - Plant
+  - StayArea
+  - Explosion
   layers:
   - Default
   - TransparentFX

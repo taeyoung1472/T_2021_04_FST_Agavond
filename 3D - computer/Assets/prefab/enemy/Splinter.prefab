@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 3028968229412089119}
   - component: {fileID: 3028968229412089112}
   - component: {fileID: 3028968229412089113}
+  - component: {fileID: -4412562006964316299}
   m_Layer: 0
   m_Name: Splinter
   m_TagString: enemy
@@ -115,7 +116,7 @@ MonoBehaviour:
   hp: 100
   target: {fileID: 0}
   DropMoney: 40
-  PlayerMoney: 0
+  mission: {fileID: 0}
 --- !u!114 &3028968229412089119
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -147,7 +148,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 126
+  m_Constraints: 94
   m_CollisionDetection: 0
 --- !u!195 &3028968229412089113
 NavMeshAgent:
@@ -171,3 +172,22 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!95 &-4412562006964316299
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3028968229412089114}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6e264d69cfa31ff47ba9ca615834d8ed, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
