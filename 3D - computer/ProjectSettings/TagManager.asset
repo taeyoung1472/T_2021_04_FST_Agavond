@@ -20,6 +20,7 @@ TagManager:
   - Plant
   - StayArea
   - Explosion
+  - Revolver
   layers:
   - Default
   - TransparentFX

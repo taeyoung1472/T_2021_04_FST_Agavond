@@ -15,7 +15,7 @@ public class Money2 : MonoBehaviour
 
         gamemanager = FindObjectOfType<Gamemanager>();
         UI_Money.text = string.Format("{0}", Money);
-        gamemanager.load();
+    
     }
     void Update()
     {

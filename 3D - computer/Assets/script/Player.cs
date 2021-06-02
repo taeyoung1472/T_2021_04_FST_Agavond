@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
+    public GUN gun;
+    public NewGameManager newgm;
     public float hp = 100;
     public Text UI_HP;
     public AudioSource[] arrayAudio;
@@ -17,6 +19,7 @@ public class Player : MonoBehaviour
     public float ShootDelay;
     public float RPM;
     public Gamemanager gamemanager;
+    public GameData game;
     //public int serveItem;
     //public int mainItem;
     /*public Text mainobject;
@@ -26,10 +29,13 @@ public class Player : MonoBehaviour
     public GameObject success;*/
     void Start()
     {
+        newgm = FindObjectOfType<NewGameManager>();
         StartCoroutine(HP_Update());
         gamemanager = FindObjectOfType<Gamemanager>();
         arrayAudio = GameObject.Find("Sound").GetComponents<AudioSource>();
         //UpdateUI();
+        gun = FindObjectOfType<GUN>();
+        newgm.GameLoad();
     }
 
     // Update is called once per frame
@@ -81,6 +87,16 @@ public class Player : MonoBehaviour
         if (col.collider.tag == "Explosion")
         {
             damage(col.gameObject.GetComponent<Explosion_Effect>().damdage);
+        }
+        if(col.collider.tag == "Gun")
+        {
+            gun.arr = 2;
+            newgm.GameSave();
+        }
+        if (col.collider.tag == "Revolver")
+        {
+            gun.arr = 6;
+            newgm.GameSave();
         }
         /*if (col.collider.tag == "ServeItem")
         {

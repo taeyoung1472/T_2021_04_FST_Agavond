@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class GUN : MonoBehaviour
 {
+    public NewGameManager newgm;
     //총관련
     private string[] GunName = {"M1911", "PL15", "Revolver", "MP5", "AK74", "SA58", "SVD", "M24", "M249"};
     //private int[] damage = { 20, 35, 100, 30, 40, 60, 100, 200, 40 };
@@ -133,6 +134,8 @@ public class GUN : MonoBehaviour
     public void pullgun(int gun)
     {
         arr = gun;
+        DataController.Instance.SaveGameData();
+        Debug.Log("총 데이터 저장 완료");
     }
     public void ButtonShoot()
     {

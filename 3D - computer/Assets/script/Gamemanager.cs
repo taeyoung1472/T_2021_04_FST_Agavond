@@ -10,7 +10,7 @@ public class Gamemanager : MonoBehaviour
     public Money2 Game_Money; 
     public DontDestroyOnLoad2 main_canvas;
     public int Arr;
-    public GUN gun;
+    public GUN gun = null;
     public int maxarr = 0;
     //public Text Money_UI;
 
@@ -59,6 +59,8 @@ public class Gamemanager : MonoBehaviour
             Debug.Log("총을 가져옴");
             gun = GameObject.FindObjectOfType<GUN>();
             Debug.Log("총 배열을 적용시킴");
+            DataController.Instance.SaveGameData();
+            Debug.Log("총 데이터 저장 완료");
             gun.pullgun(Arr);
             Debug.Log("성공");
         }
