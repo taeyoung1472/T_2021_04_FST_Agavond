@@ -5,29 +5,16 @@ using UnityEngine.UI;
 
 public class Turret : MonoBehaviour
 {
-    //총관련
-    public int[] damage = { 1, 1, 1, 1, 1, 1 };
-    public float[] RPM = { 1, 1, 1, 1, 1, 1 };
+    private float[] RPM = { 0.10f, 0.15f, 0.2f, 0.7f, 5f, 1};
     public int arr;
     public GameObject Bullet;
     public Transform FirePos;
-
-    //총 관련 오디오
     public AudioSource[] arrayAudio;
-
-    RaycastHit hit;
-
-    float Range = 200f;
-
     private void Awake()
     {
-        //Shoot = GetComponent<AudioSource>();
-        //Empty = GetComponent<AudioSource>();
         arrayAudio = GameObject.Find("PetSound").GetComponents<AudioSource>();
-
     }
-    // Start is called before the first frame update
-    void Start()
+    private void OnEnable()
     {
         StartCoroutine(Shoot());
     }

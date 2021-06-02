@@ -6,172 +6,90 @@ using UnityEngine.UI;
 public class GUN : MonoBehaviour
 {
     //총관련
-    private string[] GunName = {"M1911", "PL15", "Revolver", "MP5", "AK74", "SA58", "SVD", "M24", "M249"};
-    //private int[] damage = { 20, 35, 100, 30, 40, 60, 100, 200, 40 };
-    private float[] RPM = { 0.2f, 0.15f, 1f, 0.067f, 0.1f, 0.12f, 0.5f, 2f, 0.075f };
-    public int curammo;
-    private int[] magammo = { 7, 15, 6, 30, 30, 20, 10, 5, 99 };
-    //public float[] ReloadTime = { "M1911", "PL15", "더블액션 리볼버", "MP5", "AK74", "SA58", "SVD", "M24", "M249" };
-    public float ReloadTime;
-    public bool isFire = true;
-    public int arr;
-    public bool Fire;
-    public GameObject Bullet;
-    public Transform FirePos;
-    public bool istick;
+    private string[] GunName = {"M1911", "PL15", "Revolver", "MP5", "AK74", "SA58", "SVD", "M24", "M249"};//총의 이름
+    private float[] RPM = { 0.2f, 0.15f, 1f, 0.067f, 0.1f, 0.12f, 0.5f, 2f, 0.075f };//발사간격
+    public int curammo;//현재 총알
+    private int[] magammo = { 7, 15, 6, 30, 30, 20, 10, 5, 99 };//탄창당 총알
+    //public float[] ReloadTime = { "M1911", "PL15", "더블액션 리볼버", "MP5", "AK74", "SA58", "SVD", "M24", "M249" };//총의 장전시간
+    public float ReloadTime;//예비 장전 시간
+    public int arr;//총의 배열값
+    public bool Fire;//총을 쏠지 안쏠지
+    public GameObject Bullet;//총알
+    public Transform FirePos;//총알이 나가는 위치
+    public bool istick;//총알을 다써서 빈 소리가 난지 판단
     //총 관련 UI
-    public Text HUD;
-    public Text UI_GunName;
+    public Text HUD;//총 탄창 현황을 나타냄
+    public Text UI_GunName;//총의 이름을 보여줌
     //총 관련 오디오
-    public AudioSource[] arrayAudio;
+    public AudioSource[] arrayAudio;//총에 쓰이는 여러 소리소스
     [SerializeField]
-    private Camera camera;
+    private Camera camera;//카메라
     [SerializeField]
-    private float[] reboundY = { -1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f };
+    private float[] reboundY = { -1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f };//세로반동
     [SerializeField]
-    private float[] reboundX = { 1f, 1f, 1f, 1f, 1f, 1f, 1f, 1f, 1f };
-    public float rebound_totalZ;
-    public Transform player;
-    public TouchRotation touchRotation;
-    public float zoom;
+    private float[] reboundX = { 1f, 1f, 1f, 1f, 1f, 1f, 1f, 1f, 1f };//가로반동
+    public float rebound_totalZ;//가로반동 렌덤값 저장소
+    public TouchRotation touchRotation;//회전 관련 스크립트
+    public float zoom;//줌을 풀시의 포브값을 저장하는 변수
     [SerializeField]
-    private float[] zoomSize = { 2f, 2f, 2f, 2f, 2f, 2f, 2f, 2f, 2f };
-    //public int[] gunMod = { 1, 2, 3 };
-    //public int modArr;
-    //RaycastHit hit;
+    private float[] zoomSize = { 2f, 2f, 2f, 2f, 2f, 2f, 2f, 2f, 2f };//줌할시 적용되는 배율
+    public Button btnZoom;//줌버튼
+    private bool isZoom = false;//줌 판단 변수
 
-    float Range = 200f;
-
-    public Button btnZoom;
-
-    private void Awake()
+    private void Awake()//사운드를 받아옴
     {
-        //Shoot = GetComponent<AudioSource>();
-        //Empty = GetComponent<AudioSource>();
         arrayAudio = GameObject.Find("Sound").GetComponents<AudioSource>();
     }
-    // Start is called before the first frame update
-    private bool isZoom = false;
-    void Start()
+    void Start()//줌버튼의 온클릭을 스크립트에 넣기,장전하기,쏘기 코루틴 실행
     {
-        //이 버튼을 클릭시 Zoom함수가 실행
         btnZoom.onClick.AddListener(Zoom);
-
-        //touchRotation.lookInput.x = a;
-        //touchRotation.lookInput.y = b;
-        //if (arr == 2 || arr == 7 || arr == 6)
-        ///    modArr = 0;
-        //else
-        //    modArr = 1;
         StartCoroutine(Reload());
         StartCoroutine(Shoot());
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-    public IEnumerator Reload()
+    public IEnumerator Reload()//장전소리 > 장전시간 기달리기 > 탄약 채우기 > 탄약 UI정보 업데이트하기
     {
         arrayAudio[2].Play();
-        isFire = false;
         yield return new WaitForSeconds(ReloadTime);
-        isFire = true;
         curammo = magammo[arr];
         HUD.text = string.Format("{0} / {1}", curammo, magammo[arr]);
     }
-    private IEnumerator Shoot()
+    private IEnumerator Shoot()//무한반복 되며 FIre가 True 일시 쏨
     {
         while(true)
         {
-            if (Fire == true && curammo >= 1)
+            if (Fire == true && curammo >= 1)//Fire가 True 이고 현재 총알이 1과 같거나 클시 실행
             {
-                camera.fieldOfView = 65 / zoom;
-                Instantiate(Bullet, FirePos.transform.position, FirePos.transform.rotation);
-                rebound_totalZ = Random.Range(-reboundX[arr], reboundX[arr]);
-                touchRotation.rebound(reboundY[arr],rebound_totalZ);
-                /*rebound_totalY += reboundY;
-                rebound_totalZ += Random.Range(-reboundX, reboundX);
-                rebound_totalY = Mathf.Clamp(rebound_totalY, -20 - a, 20 + a);*/
-                arrayAudio[0].Play();
-                curammo--;
-                HUD.text = string.Format("{0} / {1}", curammo, magammo[arr]);
-                istick = true;
+                camera.fieldOfView = 65 / zoom;//포브를 넓혀 뒤로 밀리는 효과
+                Instantiate(Bullet, FirePos.transform.position, FirePos.transform.rotation);//총알을 총알 위치와 회접값에 생성
+                rebound_totalZ = Random.Range(-reboundX[arr], reboundX[arr]);//+좌우반동 -좌우반동 사이에서 랜덤값 지정하기 
+                touchRotation.rebound(reboundY[arr],rebound_totalZ);//터치로테이션에 리바운드 실행
+                arrayAudio[0].Play();//발사음 송출
+                curammo--;//현재 총알깍기
+                HUD.text = string.Format("{0} / {1}", curammo, magammo[arr]);//총알 정보업데이트
+                istick = true;//총알이 아직 차있다는 뜻
             }
-            if (Fire == true && curammo == 0 && istick == true)
+            if (Fire == true && curammo == 0 && istick == true)//현재총알이 0개이고 tick이 true일떄 실행
             {
-                istick = false;
-                arrayAudio[1].Play();
+                istick = false;//istick 을 false로
+                arrayAudio[1].Play();//tick 사운드를 실행
             }
-            yield return new WaitForSeconds(RPM[arr]);
-                            camera.fieldOfView = 60 / zoom;
-            //ReboundReturn();
+            yield return new WaitForSeconds(RPM[arr]);//다음 총쏘기 판단까지 기달리기
+                            camera.fieldOfView = 60 / zoom;//카메라 줌 초기화h
         }
-        /*while (gunMod[modArr] == 2)
-        {
-            if (Fire == true && curammo >= 1)
-            {
-                Instantiate(Bullet, FirePos.transform.position, FirePos.transform.rotation);
-                arrayAudio[0].Play();
-                curammo--;
-                HUD.text = string.Format("{0} / {1}", curammo, magammo[arr]);
-                istick = true;
-            }
-            if(Fire == true && curammo == 0 && istick == true)
-            {
-                istick = false;
-                arrayAudio[1].Play();
-            }
-            yield return new WaitForSeconds(RPM[arr]);
-        }*/
     }
-    void empty()
-    {
-        arrayAudio[1].Play();
-    }
-    public void pullgun(int gun)
+    public void pullgun(int gun)//arr값을 받는 함수
     {
         arr = gun;
     }
-    public void ButtonShoot()
+    public void ButtonShoot()//버튼 입력시 실행되는 함수 Fire 를 활성화
     {
-        //if (gunMod[modArr] == 1)
-        //{
             Fire = true;
-        //    StartCoroutine(Shoot());
-        //}
-        //if (gunMod[modArr] == 2)
-        //{
-        ///    Fire = true;
-        //}
-        //Fire = true;
     }
-    public void ButtonShootStop()
+    public void ButtonShootStop()//버튼을 떌시 실행되는 함수 FIre를 비활성화
     {
         Fire = false;
     }
-    public void reroad()
-    {
-       StartCoroutine("Reload");
-    }
-    /*private void ReboundReturn()
-    {
-        camera.transform.localRotation = Quaternion.Euler(rebound_totalY + a,rebound_totalZ, 0);
-        if (rebound_totalY <= a)
-        {
-            rebound_totalY += 0.5f;
-        }
-        if (rebound_totalZ <= 0)
-        {
-            rebound_totalZ += 0.25f;
-        }
-        if (rebound_totalZ >= 0)
-        {
-            rebound_totalZ -= 0.25f;
-        }
-    }*/
-    public void Zoom()
+    public void Zoom()//줌 함수
     {
         if (!isZoom)
         {
@@ -182,19 +100,6 @@ public class GUN : MonoBehaviour
         }
         isZoom = !isZoom;
     }
-    /*public void Shoot()
-    {
-        if (curammo > 0 && ShootDelay > RPM[arr])
-        {
-            fire();
-        }
-        else
-        {
-            empty();
-        }
-        HUD.text = string.Format("{0} / {1}", curammo, magammo[arr]);
-        UI_GunName.text = string.Format("{0}", GunName[arr]);
-    }*/
 }
         /*ShootDelay = 0f;
         Debug.DrawRay(transform.position, transform.forward * Range, Color.yellow, 0.1f);

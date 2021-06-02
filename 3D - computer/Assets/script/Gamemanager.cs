@@ -5,81 +5,40 @@ using UnityEngine.UI;
 
 public class Gamemanager : MonoBehaviour
 {
-    public int Money;
-    public money wallet;
-    public Money2 Game_Money; 
-    public DontDestroyOnLoad2 main_canvas;
-    public int Arr;
+    public int gunArr;
+    public int turretArr;
+    public int cannonArr;
     public GUN gun;
-    public int maxarr = 0;
-    //public Text Money_UI;
-
-    /*private void Awake()
-    {
-        wallet = GameObject.FindObjectOfType<money>();
-    }*/
-    void Start()
-    {
-        load();
-        wallet.UI_Update(Money);
-        //Money_UI.text = string.Format("{0}", Money);
-    }
-    //public void UI_Update()
-    //{
-        //Money_UI.text = string.Format("{0}", Money);
-    //}
-    public void GetMoney(int Get)
-    {
-        Money += Get;
-        wallet.UI_Update(Money);
-        Game_Money.UI_Update(Money);
-        //UI_Update();
-    }
-    public void die()
-    {
-        main_canvas.Die();
-    }
-    public void load()
-    {
-        Game_Money = GameObject.FindObjectOfType<Money2>();
-        Game_Money.UI_Update(Money);
-    }
+    public TurretManager turret;
+    public Cannon cannon;
     public void Update()
     {
-        if (wallet == null)
-        {
-            Debug.Log("돈을 가져옴");
-            wallet = GameObject.FindObjectOfType<money>();
-            Debug.Log("돈을 적용시킴");
-            wallet.UI_Update(Money);
-            Debug.Log("성공");
-        }
         if (gun == null)
         {
-            Debug.Log("총을 가져옴");
             gun = GameObject.FindObjectOfType<GUN>();
-            Debug.Log("총 배열을 적용시킴");
-            gun.pullgun(Arr);
-            Debug.Log("성공");
+            gun.pullgun(gunArr);
+        }
+        if (turret == null)
+        {
+            turret = GameObject.FindObjectOfType<TurretManager>();
+            turret.pullturret(turretArr);
+        }
+        if (cannon == null)
+        {
+            cannon = GameObject.FindObjectOfType<Cannon>();
+            cannon.pullcannon(cannonArr);
         }
     }
     public void upgradeGun(int cur)
     {
-        if (maxarr <= cur)
-        {
-            maxarr = cur;
-        }
-        Arr = cur;
+        gunArr = cur;
     }
-    /*public void Gunload()
+    public void upgradeTurret(int cur)
     {
-        if (gun == null)
-        {
-            Debug.Log("총을 가져옴");
-            gun = GameObject.FindObjectOfType<GUN>();
-            Debug.Log("총 배열을 적용시킴");
-            gun.pullgun(Arr);
-            Debug.Log("성공");
-        }
-    }*/
+        turretArr = cur;
+    }
+    public void upgradeCannon(int cur)
+    {
+        cannonArr = cur;
+    }
 }

@@ -23,7 +23,7 @@ public class Bullet : MonoBehaviour
     }
     private IEnumerator Destroy()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(5f);
         Destroy(gameObject);
     }
 }

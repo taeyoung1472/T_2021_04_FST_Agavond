@@ -5,22 +5,23 @@ using UnityEngine.UI;
 
 public class GunShop : MonoBehaviour
 {
-    public Text Money_UI;
+    //public Text Money_UI;
     private Gamemanager GameManager;
     public RectTransform GunStore;
-    public int Money;
-    private int[] Price = {100,500,1000,4500,10000,20000,30000,45000};
-    private money money;
+    public int high;
+    //public int Money;
+    //private int[] Price = {100,500,1000,4500,10000,20000,30000,45000};
+    //private money money;
     //public RectTransform PetStore;
 
-    public GameObject Pistole;
+    /*public GameObject Pistole;
     public GameObject Revolver;
     public GameObject SMG;
     public GameObject Asultrifle;
     public GameObject Battelrifle;
     public GameObject DMR;
     public GameObject SR;
-    public GameObject Lmg;
+    public GameObject Lmg;*/
 
     /*public GameObject Drone;
     public GameObject GrounDrone;
@@ -32,15 +33,15 @@ public class GunShop : MonoBehaviour
     private void Start()
     {
         GameManager = FindObjectOfType<Gamemanager>();
-        Money = FindObjectOfType<Gamemanager>().Money;
-        money.UI_Update(Money);
+        //Money = FindObjectOfType<Gamemanager>().Money;
+        //money.UI_Update(Money);
         //GameManager.UI_Update();
     }
-    private void Update()
+    /*private void Update()
     {
         Money = FindObjectOfType<Gamemanager>().Money;
         //GameManager.UI_Update();
-    }
+    }*/
     public void Enter()
     {
         GunStore.anchoredPosition = Vector3.zero;
@@ -48,92 +49,7 @@ public class GunShop : MonoBehaviour
 
     public void Exit()
     {
-        GunStore.anchoredPosition = Vector3.down * 2000;
-    }
-    /*public void UpGradeEnter()
-    {
-        PetStore.anchoredPosition = Vector3.zero;
-    }*/
-
-    /*public void UpGradeExit()
-    {
-        PetStore.anchoredPosition = Vector3.down * 4000;
-    }*/
-    public void upgrade1()
-    {
-        if (Money >= Price[0])
-        {
-            Debug.Log("업그레이드를 함");
-            UI_Update();
-            Pistole.SetActive(false);
-            GameManager.GetMoney(-Price[0]);
-            Debug.Log("니가 드디어 성공함");
-        }
-        else
-            Debug.Log("니가 문갈 잘못함");
-    }
-    public void upgrade2()
-    {
-        if (Money >= Price[1])
-        {
-            UI_Update();
-            Revolver.SetActive(false);
-            GameManager.GetMoney(-Price[1]);
-        }
-    }
-    public void upgrade3()
-    {
-        if (Money >= Price[2])
-        {
-            UI_Update();
-            SMG.SetActive(false);
-            GameManager.GetMoney(-Price[2]);
-        }
-    }
-    public void upgrade4()
-    {
-        if (Money >= Price[3])
-        {
-            UI_Update();
-            Asultrifle.SetActive(false);
-            GameManager.GetMoney(-Price[3]);
-        }
-    }
-    public void upgrade5()
-    {
-        if (Money >= Price[4])
-        {
-            UI_Update();
-            Battelrifle.SetActive(false);
-            GameManager.GetMoney(-Price[4]);
-        }
-    }
-    public void upgrade6()
-    {
-        if (Money >= Price[5])
-        {
-            UI_Update();
-            DMR.SetActive(false);
-            GameManager.GetMoney(-Price[5]);
-        }
-    }
-    public void upgrade7()
-    {
-        if (Money >= Price[6])
-        {
-            UI_Update();
-            SR.SetActive(false);
-            GameManager.GetMoney(-Price[6]);
-        }
-    }
-    public void upgrade8()
-    {
-        if (Money >= Price[7])
-        {
-            UI_Update();
-            Lmg.SetActive(false);
-            GameManager.GetMoney(-Price[7]);
-        }
+        GunStore.anchoredPosition = Vector3.down * high;
     }
     public void choice1()
     {
@@ -167,9 +83,38 @@ public class GunShop : MonoBehaviour
     {
         GameManager.upgradeGun(8);
     }
-    public void UI_Update()
+    //-----------------------------------------------------------//
+    public void TurretChoice1()
     {
-        Money_UI.text = string.Format("{0}", Money);
-        Money = FindObjectOfType<Gamemanager>().Money;
+        GameManager.upgradeTurret(0);
+    }
+    public void TurretChoice2()
+    {
+        GameManager.upgradeTurret(1);
+    }
+    public void TurretChoice3()
+    {
+        GameManager.upgradeTurret(2);
+    }
+    public void TurretChoice4()
+    {
+        GameManager.upgradeTurret(3);
+    }
+    public void TurretChoice5()
+    {
+        GameManager.upgradeTurret(4);
+    }
+    //-----------------------------------------------------------//
+    public void CannonChoice1()
+    {
+        GameManager.upgradeCannon(0);
+    }
+    public void CannonChoice2()
+    {
+        GameManager.upgradeCannon(1);
+    }
+    public void CannonChoice3()
+    {
+        GameManager.upgradeCannon(2);
     }
 }

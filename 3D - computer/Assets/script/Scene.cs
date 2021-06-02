@@ -12,11 +12,11 @@ public class Scene : MonoBehaviour
         {
             case "PlayBtn":
                 SceneManager.LoadScene("Game");
-                main_canvas.Change();
+                //main_canvas.Change();
                 break;
             case "TestBtn":
                 SceneManager.LoadScene("Base");
-                main_canvas.Change();
+                //main_canvas.Change();
                 break;
         }
     }

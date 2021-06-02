@@ -9,8 +9,6 @@ public class enemy : MonoBehaviour
 
     public int hp = 100;
     public Transform target;
-    public int DropMoney;
-    private money Money;
     [SerializeField]
     private MissionCheck mission;
 
@@ -37,7 +35,6 @@ public class enemy : MonoBehaviour
         {
             mission.Kill();
             Destroy(gameObject);
-            gameManager.GetMoney(DropMoney);
         }
         nav.SetDestination(target.position);
     }

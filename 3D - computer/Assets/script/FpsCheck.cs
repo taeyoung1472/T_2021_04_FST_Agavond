@@ -10,13 +10,15 @@ public class FpsCheck : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(FpsCheckcol());
+        //StartCoroutine(FpsCheckcol());
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        deltaTime += (Time.deltaTime - deltaTime) * 1f;
+        float fps = Mathf.Round(1 / Time.deltaTime);
+        FPStext.text = string.Format("{0}", fps);
     }
     private IEnumerator FpsCheckcol()
     {
