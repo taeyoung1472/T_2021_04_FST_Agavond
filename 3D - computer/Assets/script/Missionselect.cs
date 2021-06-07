@@ -7,6 +7,7 @@ public class Tool : MonoBehaviour
 {
     public GameObject btn;
     public GameObject panel;
+    public GameObject panel2;
     void Start()
     {
         btn.SetActive(true);
@@ -15,11 +16,11 @@ public class Tool : MonoBehaviour
     public void Use()
     {
         btn.SetActive(false);
-        panel.SetActive(true);
+        panel2.SetActive(true);
     }
     public void exit()
     {
-        panel.SetActive(false);
+        panel2.SetActive(false);
         btn.SetActive(true);
     }
 }

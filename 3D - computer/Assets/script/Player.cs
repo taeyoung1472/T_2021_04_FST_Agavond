@@ -99,6 +99,13 @@ public class Player : MonoBehaviour
             dotDamage = false;
         }*/
     }
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.transform.tag == "Explosion")
+        {
+            damage(other.gameObject.GetComponent<Explosion_Effect>().damdage);
+        }
+    }
     void damage(float damage)
     {
         arrayAudio[4].Play();

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 9142682768824231067}
   - component: {fileID: 8268976116424036500}
   - component: {fileID: 769819430976984993}
-  m_Layer: 10
+  m_Layer: 11
   m_Name: blackSmoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4881,7 +4881,7 @@ GameObject:
   - component: {fileID: 437834896050515772}
   - component: {fileID: 2346214489634988680}
   - component: {fileID: 3039840530941425487}
-  m_Layer: 10
+  m_Layer: 11
   m_Name: smallFire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9751,7 +9751,7 @@ GameObject:
   - component: {fileID: 2466894093194851646}
   - component: {fileID: 2551805238428377819}
   - component: {fileID: 1303179002966882813}
-  m_Layer: 10
+  m_Layer: 11
   m_Name: redSmoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14624,7 +14624,7 @@ GameObject:
   - component: {fileID: 6441108789239769968}
   - component: {fileID: 5471864175940074435}
   - component: {fileID: 7415408352706038638}
-  m_Layer: 10
+  m_Layer: 11
   m_Name: ExplosionPB
   m_TagString: Explosion
   m_Icon: {fileID: 0}

@@ -6,10 +6,6 @@ public class Sceneffect : MonoBehaviour
 {
     public Camera[] scene;
     public int[] time;
-    void Start()
-    {
-        
-    }
     public void Effect(int num)
     {
         StartCoroutine(Effectcoru(num));

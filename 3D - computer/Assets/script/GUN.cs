@@ -100,6 +100,10 @@ public class GUN : MonoBehaviour
         }
         isZoom = !isZoom;
     }
+    public void Reroad()
+    {
+        StartCoroutine(Reload());
+    }
 }
         /*ShootDelay = 0f;
         Debug.DrawRay(transform.position, transform.forward * Range, Color.yellow, 0.1f);

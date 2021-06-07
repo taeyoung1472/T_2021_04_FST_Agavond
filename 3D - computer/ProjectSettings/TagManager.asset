@@ -20,6 +20,7 @@ TagManager:
   - Plant
   - StayArea
   - Explosion
+  - Ball
   layers:
   - Default
   - TransparentFX
@@ -32,7 +33,7 @@ TagManager:
   - Player
   - MiniMapIcon
   - Bullet
-  - 
+  - EnemyBullet
   - 
   - 
   - 

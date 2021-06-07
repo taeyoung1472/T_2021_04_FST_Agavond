@@ -30,15 +30,25 @@ public class MissionCheck : MonoBehaviour
     void Update()
     {
         bar.value = a * 0.0003f;
-        if (mainItem >= maingoalpoint && serveItem >= servegoalpoint && finish[2] == true)
+        if(bar.value >= 1)
         {
-            finish[2] = false;
-            success.SetActive(true);
+            finish[2] = true;
         }
-        if (serveItem >= servegoalpoint && finish[0] == true)
+        if(finish[0] == true)
         {
-            finish[0] = false;
             sceneffect.Effect(1);
+            if (finish[1] == true)
+            {
+                sceneffect.Effect(2);
+                if (finish[2] == true)
+                {
+                    sceneffect.Effect(3);
+                    if (finish[3] == true)
+                    {
+                        success.SetActive(true);
+                    }
+                }
+            }
         }
         /*if (mainItem >= maingoalpoint && finish[1] == true)
         {
@@ -48,22 +58,26 @@ public class MissionCheck : MonoBehaviour
     }
     void OnCollisionEnter(Collision col)
     {
-        if (col.collider.tag == "ServeItem")
+        if (col.collider.tag == "ServeItem" && finish[0] == true)
         {
             serveItem++;
+            if (serveItem >= servegoalpoint)
+                finish[1] = true;
+            Destroy(col.gameObject);
             UpdateUI();
         }
-        if (col.collider.tag == "ServeItem") Destroy(col.gameObject);
-        if (col.collider.tag == "MainItem")
+        if (col.collider.tag == "MainItem" && finish[2] == true)
         {
             mainItem++;
+            if (mainItem >= maingoalpoint)
+                finish[3] = true;
+            Destroy(col.gameObject);
             UpdateUI();
         }
-        if (col.collider.tag == "MainItem") Destroy(col.gameObject);
     }
     private void OnTriggerStay(Collider other)
     {
-        if (other.name == "StayArea")
+        if (other.name == "StayArea" && finish[1]==true)
         {
             a += 1;
         }
@@ -81,6 +95,8 @@ public class MissionCheck : MonoBehaviour
     public void Kill()
     {
         zombie++;
+        if (zombie >= zombiegoalpoint)
+            finish[0] = true;
         UpdateUI();
     }
 }
