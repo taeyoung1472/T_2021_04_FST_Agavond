@@ -17,6 +17,7 @@ public class MissionCheck : MonoBehaviour
     public GameObject success;
     public Sceneffect sceneffect;
     public bool[] finish;
+    public bool[] finish2;
     public int a;
     public Slider bar;
     // Start is called before the first frame update
@@ -36,16 +37,25 @@ public class MissionCheck : MonoBehaviour
         }
         if(finish[0] == true)
         {
-            sceneffect.Effect(1);
+            if(finish2[0] == true)
+                sceneffect.Effect(1);
+            finish2[0] = false;
             if (finish[1] == true)
             {
-                sceneffect.Effect(2);
+                if (finish2[1] == true)
+                    sceneffect.Effect(2);
+                finish2[1] = false;
                 if (finish[2] == true)
                 {
-                    sceneffect.Effect(3);
+                    if (finish2[2] == true)
+                        sceneffect.Effect(3);
+                    finish2[2] = false;
                     if (finish[3] == true)
                     {
+                        if (finish2[3] == true)
+                            sceneffect.Effect(4);
                         success.SetActive(true);
+                        finish2[3] = false;
                     }
                 }
             }
