@@ -19,7 +19,7 @@ public class GUN : MonoBehaviour
     private float[] ReloadTime = { 3, 1, 1, 1, 1, 1, 1, 1, 1};//총의 장전시간
     //public float ReloadTime;//예비 장전 시간
     public bool Fire;//총을 쏠지 안쏠지
-    public GameObject Bullet;//총알
+    public GameObject[] Bullet;//총알
     public Transform[] FirePos;//총알이 나가는 위치
     public bool istick;//총알을 다써서 빈 소리가 난지 판단
     //총 관련 UI
@@ -38,8 +38,8 @@ public class GUN : MonoBehaviour
     public float zoom;//줌을 풀시의 포브값을 저장하는 변수
     [SerializeField]
     private float[] zoomSize = { 2f, 2f, 2f, 2f, 2f, 2f, 2f, 2f, 2f };//줌할시 적용되는 배율
-    [SerializeField]
-    public GameObject[] muzzelFlash;
+    //[SerializeField]
+    //public GameObject[] muzzelFlash;
     public Button btnZoom;//줌버튼
     private bool isZoom = false;//줌 판단 변수
     private bool isFire = true;
@@ -51,10 +51,15 @@ public class GUN : MonoBehaviour
     void Start()//줌버튼의 온클릭을 스크립트에 넣기,장전하기,쏘기 코루틴 실행
     {
         //muzzelFlash[arr].SetActive(false);
-        gunObject[arr].SetActive(true);
         btnZoom.onClick.AddListener(Zoom);
         StartCoroutine(Reload());
         StartCoroutine(Shoot());
+        StartCoroutine(GunUse());
+    }
+    public IEnumerator GunUse()
+    {
+        yield return new WaitForSeconds(1f);
+        gunObject[arr].SetActive(true);
     }
     public IEnumerator Reload()//장전소리 > 장전시간 기달리기 > 탄약 채우기 > 탄약 UI정보 업데이트하기
     {
@@ -77,7 +82,7 @@ public class GUN : MonoBehaviour
             if (Fire == true && curammo >= 1 && isFire == true)//Fire가 True 이고 현재 총알이 1과 같거나 클시 실행
             {
                 camera.fieldOfView = 65 / zoom;//포브를 넓혀 뒤로 밀리는 효과
-                Instantiate(Bullet, FirePos[arr].transform.position, FirePos[arr].transform.rotation);//총알을 총알 위치와 회접값에 생성
+                Instantiate(Bullet[arr], FirePos[arr].transform.position, FirePos[arr].transform.rotation);//총알을 총알 위치와 회접값에 생성
                 //muzzelFlash[arr].SetActive(true);
                 animator[arr].Play("Shoot");
                 rebound_totalZ = Random.Range(-reboundX[arr], reboundX[arr]);//+좌우반동 -좌우반동 사이에서 랜덤값 지정하기 
@@ -86,15 +91,15 @@ public class GUN : MonoBehaviour
                 curammo--;//현재 총알깍기
                 HUD.text = string.Format("{0} / {1}", curammo, magammo[arr]);//총알 정보업데이트
                 istick = true;//총알이 아직 차있다는 뜻
+                yield return new WaitForSeconds(RPM[arr]);//다음 총쏘기 판단까지 기달리기
             }
-            else
-                //muzzelFlash[arr].SetActive(false);
+            //muzzelFlash[arr].SetActive(falswe);
             if (Fire == true && curammo == 0 && istick == true && isFire == true)//현재총알이 0개이고 tick이 true일떄 실행
             {
                 istick = false;//istick 을 false로
                 arrayAudio[1].Play();//tick 사운드를 실행
             }
-            yield return new WaitForSeconds(RPM[arr]);//다음 총쏘기 판단까지 기달리기
+            yield return new WaitForSeconds(0.01f);
                             camera.fieldOfView = 60 / zoom;//카메라 줌 초기화h
         }
     }
