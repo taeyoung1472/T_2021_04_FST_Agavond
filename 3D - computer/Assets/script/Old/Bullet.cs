@@ -13,10 +13,6 @@ public class Bullet : MonoBehaviour
         rigidbody.AddForce(transform.forward * Bulletspeed);
         StartCoroutine(Destroy());
     }
-    void Update()
-    {
-        
-    }
     private void OnCollisionEnter(Collision col)
     {
         Destroy(gameObject);

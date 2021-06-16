@@ -100,7 +100,7 @@ public class MissionCheck : MonoBehaviour
     }
     public void Back()
     {
-        SceneManager.LoadScene("Main");
+        SceneManager.LoadScene("0Main");
     }
     public void Kill()
     {

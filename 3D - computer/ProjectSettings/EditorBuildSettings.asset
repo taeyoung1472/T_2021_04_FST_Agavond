@@ -12,6 +12,27 @@ EditorBuildSettings:
     path: Assets/Scenes/Game.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
-    path: Assets/Scenes/Base.unity
+    path: Assets/Scenes/Basic.unity
     guid: a8aed7d8f26116f48bc59a028d55ee9e
+  - enabled: 1
+    path: Assets/Scenes/0Main.unity
+    guid: 98196aba848b504429a7961b27fe706c
+  - enabled: 1
+    path: Assets/Scenes/1Forest.unity
+    guid: 4e809754fe3240d46b7a83d54738d8b8
+  - enabled: 1
+    path: Assets/Scenes/2Town.unity
+    guid: 794561ac31d2e9242828c98d4254f5b9
+  - enabled: 1
+    path: Assets/Scenes/3PlayGround.unity
+    guid: 820121db8fcc78a418bec91448b0c64d
+  - enabled: 1
+    path: Assets/Scenes/4Farm.unity
+    guid: 332b2225d72902b4f8d147951276df4c
+  - enabled: 1
+    path: Assets/Scenes/5Newclear.unity
+    guid: 87d4cfba1512aec45aee4f27e5b91442
+  - enabled: 1
+    path: Assets/Scenes/6Boss.unity
+    guid: c7bd16ecc170ffa4c86fb21fb7cadd6a
   m_configObjects: {}

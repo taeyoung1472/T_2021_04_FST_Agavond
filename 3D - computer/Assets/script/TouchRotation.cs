@@ -10,10 +10,9 @@ public class TouchRotation : MonoBehaviour
     public int leftInput, rightInput;
     public Vector2 lookInput;
     public float cameraPitch;
-    public float cameraPitchTotal;
     public float halfScreenWidth;
     public GUN gun;
-    public float  a;
+    public float a;
     void Start()
     {
         leftInput = -1;
@@ -79,18 +78,18 @@ public class TouchRotation : MonoBehaviour
     }
     void LookAround()
     {
-        cameraPitchTotal += a;
-        cameraPitchTotal = Mathf.Clamp(cameraPitchTotal - lookInput.y, -20f, 20f);
-        cameraTransform.localRotation = Quaternion.Euler(cameraPitchTotal, 0, 0) ;
+        cameraPitch += a;
+        cameraPitch = Mathf.Clamp(cameraPitch - lookInput.y, -20f, 20f);
+        cameraTransform.localRotation = Quaternion.Euler(cameraPitch, 0, 0) ;
 
         transform.Rotate(transform.up, lookInput.x);
     }
     public void rebound(float x,float y)
     {
         a = x;
-        cameraPitchTotal += a;
-        cameraPitchTotal = Mathf.Clamp(cameraPitchTotal - lookInput.y, -20f, 20f);
-        cameraTransform.localRotation = Quaternion.Euler(cameraPitchTotal, 0, 0);
+        cameraPitch += a;
+        cameraPitch = Mathf.Clamp(cameraPitch - lookInput.y, -20f, 20f);
+        cameraTransform.localRotation = Quaternion.Euler(cameraPitch, 0, 0);
         a = 0;
         transform.Rotate(transform.up, y);
     }

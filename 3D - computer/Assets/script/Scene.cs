@@ -15,7 +15,7 @@ public class Scene : MonoBehaviour
                 //main_canvas.Change();
                 break;
             case "TestBtn":
-                SceneManager.LoadScene("Base");
+                SceneManager.LoadScene("0Main");
                 //main_canvas.Change();
                 break;
         }

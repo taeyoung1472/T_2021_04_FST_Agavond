@@ -10,7 +10,8 @@ public class EnemySpawn : MonoBehaviour
     public int firstSpawnTime;
     public int SpawnDelay;
     public float y;
-
+    public Vector2 Xpos;
+    public Vector2 Zpos;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,8 +19,8 @@ public class EnemySpawn : MonoBehaviour
     }
     void SpawnEnemy()
     {
-        float randomX = Random.Range(-175f, 175f);
-        float randomZ = Random.Range(-175f, 175f);
+        float randomX = Random.Range(Xpos.x, Xpos.y);
+        float randomZ = Random.Range(Zpos.x, Zpos.y);
 
         GameObject enemy = (GameObject)Instantiate(Enemy, new Vector3(randomX, y, randomZ), Quaternion.identity); //랜덤한 위치와, 화면 제일 위에서 Enemy를 하나 생성해줍니다.
 

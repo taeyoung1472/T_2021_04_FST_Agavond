@@ -9,7 +9,7 @@ public class GUN : MonoBehaviour
     public int arr;//총의 배열값
     private string[] GunName = {"PMM", "PL15", "Revolver", "MP7", "AK74", "SA58", "SVD", "M24", "M249"};//총의 이름
     [SerializeField]
-    private float[] RPM = { 0.2f, 0.15f, 1f, 0.067f, 0.1f, 0.12f, 0.5f, 2f, 0.075f };//발사간격
+    private float[] RPM = { 0.2f, 0.15f, 0.3f, 0.07f, 0.1f, 0.12f, 0.5f, 2f, 0.075f };//발사간격
     public Animator[] animator;
     public Animator[] animator1;
     public int curammo;//현재 총알
@@ -65,14 +65,14 @@ public class GUN : MonoBehaviour
     {
         isFire = false;
         arrayAudio[2].Play();
-        if (isZoom == true)
-            animator1[arr].Play("ZoomOut");
+        //if (isZoom == true)
+            //animator1[arr].Play("ZoomOut");
         animator[arr].Play("Reload 0");
         yield return new WaitForSeconds(ReloadTime[arr]);
         curammo = magammo[arr];
         HUD.text = string.Format("{0} / {1}", curammo, magammo[arr]);
-        if(isZoom == true)
-            animator1[arr].Play("Zoom");
+        //if(isZoom == true)
+            //animator1[arr].Play("Zoom");
         isFire = true;
     }
     private IEnumerator Shoot()//무한반복 되며 FIre가 True 일시 쏨

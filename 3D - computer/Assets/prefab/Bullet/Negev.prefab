@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1639558644303381631}
   - component: {fileID: 4064105218196241113}
   m_Layer: 10
-  m_Name: PMM 4
+  m_Name: Negev
   m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -144,7 +144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 366211a6d33e9fe4db45e651ebe41cc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Bulletspeed: 75
+  Bulletspeed: 35
   damdage: 30
   rigidbody: {fileID: 4064105218196241113}
 --- !u!65 &1639558644303381631

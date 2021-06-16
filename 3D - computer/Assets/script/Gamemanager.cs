@@ -16,17 +16,17 @@ public class Gamemanager : MonoBehaviour
         if (gun == null)
         {
             gun = GameObject.FindObjectOfType<GUN>();
-            gun.pullgun(gunArr);
+            //gun.pullgun(gunArr);
         }
         if (turret == null)
         {
             turret = GameObject.FindObjectOfType<TurretManager>();
-            turret.pullturret(turretArr);
+            //turret.pullturret(turretArr);
         }
         if (cannon == null)
         {
             cannon = GameObject.FindObjectOfType<Cannon>();
-            cannon.pullcannon(cannonArr);
+            //cannon.pullcannon(cannonArr);
         }
     }
     public void upgradeGun(int cur)

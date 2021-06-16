@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2311282000935712153}
   - component: {fileID: 1059798866917641023}
   m_Layer: 10
-  m_Name: PMM 3
+  m_Name: RPK
   m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -144,7 +144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 366211a6d33e9fe4db45e651ebe41cc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Bulletspeed: 75
+  Bulletspeed: 35
   damdage: 30
   rigidbody: {fileID: 1059798866917641023}
 --- !u!65 &2311282000935712153

@@ -29,7 +29,6 @@ public class GunShop : MonoBehaviour
     public GameObject Jet;
     public GameObject Mortal;
     public GameObject artillery;*/
-
     private void Start()
     {
         GameManager = FindObjectOfType<Gamemanager>();
@@ -82,6 +81,10 @@ public class GunShop : MonoBehaviour
     public void choice8()
     {
         GameManager.upgradeGun(8);
+    }
+    public void choice9()
+    {
+        GameManager.upgradeGun(9);
     }
     //-----------------------------------------------------------//
     public void TurretChoice1()
