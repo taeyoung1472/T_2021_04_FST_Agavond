@@ -50,6 +50,10 @@ public class GunShop : MonoBehaviour
     {
         GunStore.anchoredPosition = Vector3.down * high;
     }
+    public void choice0()
+    {
+        GameManager.upgradeGun(0);
+    }
     public void choice1()
     {
         GameManager.upgradeGun(1);
