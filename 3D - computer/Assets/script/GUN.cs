@@ -7,21 +7,18 @@ public class GUN : MonoBehaviour
 {
     //총관련
     public int arr;//총의 배열값
-    private string[] GunName = {"PMM", "PL15", "Revolver", "MP7", "AK74", "SA58", "SVD", "M24", "M249"};//총의 이름
-    [SerializeField]
-    private float[] RPM = { 0.2f, 0.15f, 0.3f, 0.07f, 0.1f, 0.12f, 0.5f, 2f, 0.075f };//발사간격
+    private float[] RPM = { 0.3f, 0.15f, 0.3f, 0.07f, 0.1f, 0.12f, 0.5f, 2f, 0.092f, 0.075f };//발사간격
     public Animator[] animator;
     public Animator[] animator1;
-    public int curammo;//현재 총알
+    private int curammo;//현재 총알
+    private int[] magammo = { 7, 15, 6, 30, 30, 20, 10, 5, 90, 150 };//탄창당 총알
     [SerializeField]
-    private int[] magammo = { 7, 15, 6, 30, 30, 20, 10, 5, 99 };//탄창당 총알
-    [SerializeField]
-    private float[] ReloadTime = { 3, 1, 1, 1, 1, 1, 1, 1, 1};//총의 장전시간
+    private float[] ReloadTime = { 0.7f, 1, 1, 1, 1, 1, 1, 1, 2.6f, 2.6f};//총의 장전시간
     //public float ReloadTime;//예비 장전 시간
-    public bool Fire;//총을 쏠지 안쏠지
+    private bool Fire;//총을 쏠지 안쏠지
     public GameObject[] Bullet;//총알
     public Transform[] FirePos;//총알이 나가는 위치
-    public bool istick;//총알을 다써서 빈 소리가 난지 판단
+    private bool istick;//총알을 다써서 빈 소리가 난지 판단
     //총 관련 UI
     public Text HUD;//총 탄창 현황을 나타냄
     public Text UI_GunName;//총의 이름을 보여줌
@@ -44,6 +41,7 @@ public class GUN : MonoBehaviour
     private bool isZoom = false;//줌 판단 변수
     private bool isFire = true;
     public GameObject[] gunObject;
+    public GunSound[] gunSound;
     private void Awake()//사운드를 받아옴
     {
         arrayAudio = GameObject.Find("Sound").GetComponents<AudioSource>();
@@ -64,7 +62,8 @@ public class GUN : MonoBehaviour
     public IEnumerator Reload()//장전소리 > 장전시간 기달리기 > 탄약 채우기 > 탄약 UI정보 업데이트하기
     {
         isFire = false;
-        arrayAudio[2].Play();
+        gunSound[arr].Reload();
+        //arrayAudio[2].Play();
         //if (isZoom == true)
             //animator1[arr].Play("ZoomOut");
         animator[arr].Play("Reload 0");
@@ -87,7 +86,8 @@ public class GUN : MonoBehaviour
                 animator[arr].Play("Shoot");
                 rebound_totalZ = Random.Range(-reboundX[arr], reboundX[arr]);//+좌우반동 -좌우반동 사이에서 랜덤값 지정하기 
                 touchRotation.rebound(reboundY[arr],rebound_totalZ);//터치로테이션에 리바운드 실행
-                arrayAudio[0].Play();//발사음 송출
+                gunSound[arr].Shoot();
+                //arrayAudio[0].Play();//발사음 송출
                 curammo--;//현재 총알깍기
                 HUD.text = string.Format("{0} / {1}", curammo, magammo[arr]);//총알 정보업데이트
                 istick = true;//총알이 아직 차있다는 뜻
