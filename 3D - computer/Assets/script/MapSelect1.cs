@@ -6,11 +6,6 @@ public class MapSelect1 : MonoBehaviour
 {
     public GameObject button;
     public GameObject Map;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
     public void Use()
     {
         button.SetActive(false);

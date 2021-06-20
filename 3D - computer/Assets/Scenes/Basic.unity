@@ -8378,6 +8378,8 @@ MonoBehaviour:
   firstSpawnTime: 120
   SpawnDelay: 30
   y: 0
+  Xpos: {x: 0, y: 0}
+  Zpos: {x: 0, y: 0}
 --- !u!1 &197911887
 GameObject:
   m_ObjectHideFlags: 0
@@ -12308,17 +12310,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   arr: 1
-  RPM:
-  - 0.2
-  - 0.15
-  - 0.3
-  - 0.07
-  - 0.1
-  - 0.12
-  - 0.5
-  - 2
-  - 0.092
-  - 0.075
   animator:
   - {fileID: 1971542772}
   - {fileID: 1934966060}
@@ -12341,8 +12332,6 @@ MonoBehaviour:
   - {fileID: 635217382}
   - {fileID: 347130455}
   - {fileID: 1446576331}
-  curammo: 0
-  magammo: 070000000f000000060000001e0000001e000000140000000a000000050000005500000096000000
   ReloadTime:
   - 0.7
   - 1
@@ -12354,7 +12343,6 @@ MonoBehaviour:
   - 1
   - 2.6
   - 2.6
-  Fire: 0
   Bullet:
   - {fileID: 4669665021703564465, guid: 514e663a96f326e4b9bab031187ebe05, type: 3}
   - {fileID: 4669665021703564465, guid: 514e663a96f326e4b9bab031187ebe05, type: 3}
@@ -12377,7 +12365,6 @@ MonoBehaviour:
   - {fileID: 639673033}
   - {fileID: 618219064}
   - {fileID: 418272457}
-  istick: 0
   HUD: {fileID: 2102066646}
   UI_GunName: {fileID: 0}
   arrayAudio: []
@@ -12430,6 +12417,7 @@ MonoBehaviour:
   - {fileID: 635217380}
   - {fileID: 347130453}
   - {fileID: 1446576329}
+  gunSound: []
 --- !u!1001 &290010975
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13122,6 +13110,8 @@ MonoBehaviour:
   firstSpawnTime: 30
   SpawnDelay: 8
   y: 0
+  Xpos: {x: 0, y: 0}
+  Zpos: {x: 0, y: 0}
 --- !u!1001 &327111911
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13391,6 +13381,8 @@ MonoBehaviour:
   firstSpawnTime: 300
   SpawnDelay: 15
   y: 0
+  Xpos: {x: 0, y: 0}
+  Zpos: {x: 0, y: 0}
 --- !u!1 &332945929
 GameObject:
   m_ObjectHideFlags: 0
@@ -29568,6 +29560,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   handle: {fileID: 1659407335}
   outLine: {fileID: 746247477}
+  input: {x: 0, y: 0, z: 0}
 --- !u!1 &750742817
 GameObject:
   m_ObjectHideFlags: 0
@@ -31012,6 +31005,9 @@ MonoBehaviour:
   runspeed: 0
   jumpSpeed: 4
   gravity: 9.81
+  moveDirection: {x: 0, y: 0, z: 0}
+  audio: []
+  Move: 0
   joystick: {fileID: 746247480}
 --- !u!4 &788833063
 Transform:
@@ -39425,6 +39421,8 @@ MonoBehaviour:
   firstSpawnTime: 1
   SpawnDelay: 5
   y: 0
+  Xpos: {x: 0, y: 0}
+  Zpos: {x: 0, y: 0}
 --- !u!1001 &1013672708
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -41927,6 +41925,8 @@ MonoBehaviour:
   firstSpawnTime: 15
   SpawnDelay: 15
   y: 0
+  Xpos: {x: 0, y: 0}
+  Zpos: {x: 0, y: 0}
 --- !u!4 &1122191963 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7d437037f9776eb4badf42d9574eeab1, type: 3}
@@ -66163,6 +66163,8 @@ MonoBehaviour:
   firstSpawnTime: 30
   SpawnDelay: 60
   y: 1
+  Xpos: {x: 0, y: 0}
+  Zpos: {x: 0, y: 0}
 --- !u!4 &1708806740 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 258f65f5d158afb40a40ef0586fa08f9, type: 3}
@@ -84694,6 +84696,7 @@ MonoBehaviour:
   - {fileID: 1610607088}
   - {fileID: 1610607088}
   time: 03000000030000000300000003000000
+  isOff: 0
 --- !u!1 &2090146131
 GameObject:
   m_ObjectHideFlags: 0

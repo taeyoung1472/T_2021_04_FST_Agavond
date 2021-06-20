@@ -12,8 +12,9 @@ public class Hero : MonoBehaviour
     public float runspeed;
     public float jumpSpeed = 4.0F;
     public float gravity = 9.81F;
-    private Vector3 moveDirection = Vector3.zero;
-    private bool Move;
+    public Vector3 moveDirection = Vector3.zero;
+    public AudioSource[] audio;
+    public bool Move;
     private bool isjump;
     //조이스틱 관련
     public Joystick joystick;
@@ -23,6 +24,7 @@ public class Hero : MonoBehaviour
     }
     private void Start()
     {
+        StartCoroutine(Walk());
         basicspeed = speed;
     }
     void OnCollisionEnter(Collision col)
@@ -39,8 +41,15 @@ public class Hero : MonoBehaviour
             moveDirection = new Vector3(joystick.Horizontal, 0, joystick.Vertical);
             moveDirection = transform.TransformDirection(moveDirection);
             moveDirection *= speed;
+            if (moveDirection.x != 0 && moveDirection.z != 0)
+                Move = true;
+            else
+            {
+                Move = false;
+            }
             if (isjump == true)
             {
+                audio[1].Play();
                 moveDirection.y = jumpSpeed;
                 isjump = false;
             }
@@ -48,42 +57,6 @@ public class Hero : MonoBehaviour
         moveDirection.y -= gravity * Time.deltaTime;
         cc.Move(moveDirection * Time.deltaTime);
     }
-    /*public void Move(float X,float Y)
-    {
-        moveDirection = new Vector3(X, 0, Y);
-        cur.text = string.Format("{0}", X);
-        cur2.text = string.Format("{0}", Y);
-        moveDirection = transform.TransformDirection(moveDirection);
-        moveDirection *= speed;
-        cur3.text = string.Format("{0}", moveDirection);
-        cur4.text = string.Format("{0}", speed);
-        if (Input.GetButton("Jump"))
-            moveDirection.y = jumpSpeed;
-    }*/
-    /*public void Foward()
-    {
-        Move = true;
-        Z = 1;
-    }
-    public void stop()
-    {
-        Move = false;
-    }
-    public void Left()
-    {
-        Move = true;
-        X = -1;
-    }
-    public void Back()
-    {
-        Move = true;
-        Z = -1;
-    }
-    public void Right()
-    {
-        Move = true;
-        X = 1;
-    }*/
     IEnumerator BossHit()
     {
         speed = 1;
@@ -94,5 +67,15 @@ public class Hero : MonoBehaviour
     {
         isjump = true;
     }
+    IEnumerator Walk()
+    {
+        while (true)
+        {
+            if(Move == true)
+            {
+                audio[0].Play();
+            }
+            yield return new WaitForSeconds(0.4f);
+        }
+    }
 }
-

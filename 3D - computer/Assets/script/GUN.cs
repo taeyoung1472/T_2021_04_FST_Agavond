@@ -50,7 +50,7 @@ public class GUN : MonoBehaviour
     {
         //muzzelFlash[arr].SetActive(false);
         btnZoom.onClick.AddListener(Zoom);
-        StartCoroutine(Reload());
+        //StartCoroutine(Reload());
         StartCoroutine(Shoot());
         StartCoroutine(GunUse());
     }
@@ -58,6 +58,8 @@ public class GUN : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         gunObject[arr].SetActive(true);
+        curammo = magammo[arr];
+        HUD.text = string.Format("{0} / {1}", curammo, magammo[arr]);
     }
     public IEnumerator Reload()//장전소리 > 장전시간 기달리기 > 탄약 채우기 > 탄약 UI정보 업데이트하기
     {
@@ -117,6 +119,7 @@ public class GUN : MonoBehaviour
     }
     public void Zoom()//줌 함수
     {
+        arrayAudio[2].Play();
         if (!isZoom)
         {
             animator1[arr].Play("Zoom");
@@ -130,7 +133,10 @@ public class GUN : MonoBehaviour
     }
     public void Reroad()
     {
-        StartCoroutine(Reload());
+        if(isFire == true)
+        {
+            StartCoroutine(Reload());
+        }
     }
 }
         /*ShootDelay = 0f;
